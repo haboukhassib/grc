@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
+      title="msg://reportingDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="reportingDc"
+                  class="com.company.grc.entity.Reporting">
+            <fetchPlan extends="_base">
+                <property name="organization" fetchPlan="_instance_name"/>
+                <property name="user" fetchPlan="_instance_name"/>
+                <property name="regulatoryMonitoring" fetchPlan="_base"/>
+                <property name="auditRecommendation" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="reportingDl"/>
+            <collection id="regulatoryMonitoringDc" property="regulatoryMonitoring"/>
+            <collection id="auditRecommendationDc" property="auditRecommendation"/>
+        </instance>
+        <collection id="organizationDc" class="com.company.grc.entity.Organization">
+            <loader id="organizationDl">
+                <query>
+                    <![CDATA[select e from Organization e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+
+    <layout expand="contentBox" alignItems="STRETCH">
+
+        <vbox id="contentBox" css="overflow: auto;">
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <formLayout id="form" dataContainer="reportingDc">
+                    <responsiveSteps>
+                        <responsiveStep minWidth="0" columns="1"/>
+                        <responsiveStep minWidth="40em" columns="3"/>
+                    </responsiveSteps>
+                    <entityComboBox id="organizationField" property="organization" dataContainer="reportingDc" itemsContainer="organizationDc"/>
+                    <select id="yearField" property="year"/>
+                    <select id="monthField" property="month"/>
+                    <textField id="userField" property="user" visible="false"/>
+
+                </formLayout>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details summaryText="Organization" alignSelf="STRETCH">
+                    <fragment id="organizationFragment"
+                              class="com.company.grc.view.organizationfragment.OrganizationFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="kycDetails" summaryText="KYC" alignSelf="STRETCH">
+                    <fragment id="kycFragment" class="com.company.grc.view.kycfragment.KycFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="alertDetails" summaryText="Alertes" alignSelf="STRETCH">
+                    <fragment id="alertFragment" class="com.company.grc.view.alertfragment.AlertFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details summaryText="Filtrage" alignSelf="STRETCH">
+                    <fragment id="filtrageFragment" class="com.company.grc.view.filtragefragment.FiltrageFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="regulatoryMonitoring" summaryText="Regulatory Monitoring" alignSelf="STRETCH">
+                    <hbox id="buttonsPanel" classNames="buttons-panel">
+                        <button action="regulatoryMonitoringDataGrid.create"/>
+                        <button action="regulatoryMonitoringDataGrid.edit"/>
+                        <button action="regulatoryMonitoringDataGrid.remove"/>
+                    </hbox>
+                    <dataGrid id="regulatoryMonitoringDataGrid" dataContainer="regulatoryMonitoringDc" width="100%"
+                              minHeight="20em">
+                        <actions>
+                            <action id="create" type="list_create">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="edit" type="list_edit">
+                                <properties>
+                                    <property name="openMode" value="DIALOG"/>
+                                </properties>
+                            </action>
+                            <action id="remove" type="list_remove"/>
+                        </actions>
+                        <columns>
+                            <column property="legalTextName"/>
+                            <column property="textSubject"/>
+                            <column property="effectiveDate"/>
+                        </columns>
+                    </dataGrid>
+                </details>
+            </vbox>
+            <details id="auditRecommendations" summaryText="Audit Recommendations" alignSelf="STRETCH">
+                <hbox id="buttonsPanelAudit" classNames="buttons-panel">
+                    <button action="auditRecommendationsDataGrid.create"/>
+                    <button action="auditRecommendationsDataGrid.edit"/>
+                    <button action="auditRecommendationsDataGrid.remove"/>
+                </hbox>
+                <dataGrid id="auditRecommendationsDataGrid" dataContainer="auditRecommendationDc" minWidth="100px"
+                          width="100%">
+                    <actions>
+                        <action id="create" type="list_create">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="edit" type="list_edit">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="remove" type="list_remove"/>
+                    </actions>
+                    <columns>
+                        <column property="auditorName"/>
+                        <column property="auditDate"/>
+                    </columns>
+                </dataGrid>
+            </details>
+            <details id="newProduct" summaryText="New Products">
+                <h1>TODO</h1>
+            </details>
+            <details id="sanctions" summaryText="sanctions and penalties">
+                <h1>TODO</h1>
+            </details>
+            <details id="training" summaryText="Training">
+                <h1>TODO</h1>
+            </details>
+            <details id="incidents" summaryText="Incidents">
+                <h1>TODO</h1>
+            </details>
+        </vbox>
+        <vbox>
+            <hbox id="detailActions" classNames="contrast-panel" width="98.5%" padding="true">
+                <button id="saveAndCloseButton" action="saveAction"/>
+                <button id="closeButton" action="closeAction"/>
+            </hbox>
+        </vbox>
+    </layout>
+</view>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/flowui/fragment">
+    <data>
+        <instance id="reportingDc" class="com.company.grc.entity.Reporting" provided="true"/>
+    </data>
+    <content >
+        <formLayout id="kycForm" dataContainer="reportingDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+            </responsiveSteps>
+            <div classNames="grid-kyc">
+            <hbox>
+                <textField id="kyc1IntField" property="kyc1Int" label="msg://com.company.grc.entity/Reporting.kyc1Int" readOnly="true" classNames="read-only-field"/>
+            </hbox>
+
+            <formLayout>
+                <responsiveSteps>
+                    <responsiveStep minWidth="0" columns="1"/>
+                    <responsiveStep minWidth="40em" columns="4"/>
+                </responsiveSteps>
+                <textField id="kyc3IntField" property="kyc3Int" label="msg://com.company.grc.entity/Reporting.kyc3Int"/>
+                <textField id="kyc4IntField" property="kyc4Int" label="msg://com.company.grc.entity/Reporting.kyc4Int"/>
+                <textField id="kyc5IntField" property="kyc5Int" label="msg://com.company.grc.entity/Reporting.kyc5Int"/>
+                <textField id="kyc2IntField" property="kyc2Int" label="msg://com.company.grc.entity/Reporting.kyc2Int" readOnly="true" classNames="read-only-field"/>
+            </formLayout>
+            <formLayout>
+                <responsiveSteps>
+                    <responsiveStep minWidth="0" columns="1"/>
+                    <responsiveStep minWidth="40em" columns="4"/>
+                </responsiveSteps>
+                <textField id="kyc7IntField" property="kyc7Int" label="msg://com.company.grc.entity/Reporting.kyc7Int"/>
+                <textField id="kyc8IntField" property="kyc8Int" label="msg://com.company.grc.entity/Reporting.kyc8Int"/>
+                <textField id="kyc9IntField" property="kyc9Int" label="msg://com.company.grc.entity/Reporting.kyc9Int"/>
+                <textField id="kyc6IntField" property="kyc6Int" label="msg://com.company.grc.entity/Reporting.kyc6Int" readOnly="true" classNames="read-only-field"/>
+            </formLayout>
+            </div>
+        </formLayout>
+    </content>
+</fragment>

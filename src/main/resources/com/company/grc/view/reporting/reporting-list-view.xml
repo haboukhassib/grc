@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://reportingListView.title"
+      focusComponent="reportingsDataGrid">
+    <data>
+        <collection id="reportingsDc"
+                    class="com.company.grc.entity.Reporting">
+            <fetchPlan extends="_base">
+                <property name="user" fetchPlan="_instance_name"/>
+                <property name="organization" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="reportingsDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from Reporting e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="reportingsDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createButton" action="reportingsDataGrid.create"/>
+            <button id="editButton" action="reportingsDataGrid.edit"/>
+            <button id="removeButton" action="reportingsDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="reportingsDl"/>
+        </hbox>
+        <dataGrid id="reportingsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="reportingsDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="organization"/>
+                <column property="year"/>
+                <column property="month"/>
+                <column property="user"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

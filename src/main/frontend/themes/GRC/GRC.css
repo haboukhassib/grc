@@ -1,0 +1,53 @@
+/* Define your styles here */
+@import url('https://cdn.vaadin.com/vaadin-lumo-styles/1.6.0/lumo.css');
+
+html {
+    --secondary-base-color: #f4f6f7;
+    background-color: var(--secondary-base-color);
+    --lumo-primary-text-color: rgb(204, 119, 102);
+    --lumo-primary-color-50pct: rgba(204, 119, 102, 0.5);
+    --lumo-primary-color-10pct: rgba(204, 119, 102, 0.1);
+    --lumo-primary-color: hsl(10, 50%, 60%);
+    --lumo-error-text-color: rgb(255, 56, 103);
+    --lumo-error-color-50pct: rgba(255, 56, 103, 0.5);
+    --lumo-error-color-10pct: rgba(255, 56, 103, 0.1);
+    --lumo-success-text-color: rgb(20, 184, 143);
+    --lumo-success-color-50pct: rgba(20, 184, 143, 0.5);
+    --lumo-success-color-10pct: rgba(20, 184, 143, 0.1);
+    --lumo-error-color: hsl(346, 100%, 61%);
+    --lumo-success-color: hsl(165, 80%, 40%);
+    --lumo-header-text-color: hsl(285, 35%, 15%);
+    --lumo-body-text-color: hsla(285, 40%, 16%, 0.94);
+    --lumo-secondary-text-color: hsla(285, 42%, 18%, 0.72);
+    --lumo-tertiary-text-color: hsla(285, 45%, 20%, 0.5);
+    --lumo-disabled-text-color: hsla(285, 50%, 22%, 0.26);
+}
+
+.contrast-panel {
+    background-color: var(--lumo-base-color);
+    border-radius: var(--lumo-border-radius-m );
+    --vaadin-button-background: var(--secondary-base-color);
+    border-color: #c8c7c7;;
+    border-style: solid;
+    border-width: thin;
+}
+
+.grid-kyc {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: var(--lumo-space-m);
+}
+
+.grid-alert {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    grid-gap: var(--lumo-space-m);
+}
+
+vaadin-text-field.read-only-field::part(input-field) {
+    border: 1px dashed #c8c7c7;    /* Dashed border */
+    background-color: #f9f9f9;  /* Light gray background for contrast */
+    color: #a6a6a6;
+}

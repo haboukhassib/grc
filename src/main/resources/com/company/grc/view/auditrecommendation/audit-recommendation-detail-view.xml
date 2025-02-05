@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://auditRecommendationDetailView.title"
+      focusComponent="form">
+    <data>
+        <instance id="auditRecommendationDc"
+                  class="com.company.grc.entity.AuditRecommendation">
+            <fetchPlan extends="_base">
+                <property name="reporting" fetchPlan="_instance_name"/>
+            </fetchPlan>
+            <loader id="auditRecommendationDl"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <actions>
+        <action id="saveAction" type="detail_saveClose"/>
+        <action id="closeAction" type="detail_close"/>
+    </actions>
+    <layout>
+        <formLayout id="form" dataContainer="auditRecommendationDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <textField id="auditorNameField" property="auditorName"/>
+            <datePicker id="auditDateField" property="auditDate"/>
+            <textField id="reportingField" property="reporting"/>
+        </formLayout>
+        <hbox id="detailActions">
+            <button id="saveAndCloseButton" action="saveAction"/>
+            <button id="closeButton" action="closeAction"/>
+        </hbox>
+    </layout>
+</view>

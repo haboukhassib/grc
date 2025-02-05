@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/flowui/fragment">
+    <data>
+        <instance id="reportingDc" class="com.company.grc.entity.Reporting" provided="true"/>
+    </data>
+    <content>
+        <formLayout id="filtrageForm" dataContainer="reportingDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+                <responsiveStep minWidth="40em" columns="2"/>
+            </responsiveSteps>
+            <h4 text="Filtrage Clients" colspan="2"/>
+            <textField id="filtrageClient1IntField" property="filtrageClient1Int" label="msg://com.company.grc.entity/Reporting.filtrageClient1Int"/>
+            <textField id="filtrageClient2IntField" property="filtrageClient2Int" label="msg://com.company.grc.entity/Reporting.filtrageClient2Int"/>
+            <textField id="filtrageClient3IntField" property="filtrageClient3Int" label="msg://com.company.grc.entity/Reporting.filtrageClient3Int"/>
+            <textField id="filtrageClient4TxtField" property="filtrageClient4Int" label="msg://com.company.grc.entity/Reporting.filtrageClient4Int"/>
+            <h4 text="Filtrage Transactions" colspan="2" css="margin-top:15px"/>
+            <textField id="filtrageTran1IntField" property="filtrageTran1Int" label="msg://com.company.grc.entity/Reporting.filtrageTran1Int"/>
+            <textField id="filtrageTran1IntField" property="filtrageTran1Int" label="msg://com.company.grc.entity/Reporting.filtrageTran1Int"/>
+        </formLayout>
+
+    </content>
+</fragment>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <createTable tableName="REGULATORY_MONITORING">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REGULATORY_MONITORING"/>
+            </column>
+            <column name="LEGAL_TEXT_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEXT_SUBJECT" type="VARCHAR(255)"/>
+            <column name="EFFECTIVE_DATE" type="DATE"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="GRC">
+        <addColumn tableName="REPORTING">
+            <column name="KYC1_INT" type="INT"/>
+            <column name="KYC2_INT" type="INT"/>
+            <column name="ORG1_INT" type="INT"/>
+            <column name="ORG2_INT" type="INT"/>
+            <column name="ORG3_INT" type="INT"/>
+            <column name="ORG4_TXT" type="CLOB"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="GRC">
+        <createIndex indexName="IDX_REGULATORY_MONITORING_REPORTING" tableName="REGULATORY_MONITORING">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="REGULATORY_MONITORING"
+                                 constraintName="FK_REGULATORY_MONITORING_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+</databaseChangeLog>

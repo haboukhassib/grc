@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/flowui/fragment">
+    <data>
+        <instance id="reportingDc" class="com.company.grc.entity.Reporting" provided="true"/>
+    </data>
+    <content >
+        <formLayout id="alertForm" dataContainer="reportingDc">
+            <responsiveSteps>
+                <responsiveStep minWidth="0" columns="1"/>
+            </responsiveSteps>
+            <div classNames="grid-alert">
+                <hbox>
+                    <textField id="alert1IntField" property="alert1Int" label="msg://com.company.grc.entity/Reporting.alert1Int" readOnly="true" classNames="read-only-field"/>
+                </hbox>
+
+                <formLayout>
+                    <responsiveSteps>
+                        <responsiveStep minWidth="0" columns="1"/>
+                        <responsiveStep minWidth="40em" columns="4"/>
+                    </responsiveSteps>
+                    <textField id="alert3IntField" property="alert3Int" label="msg://com.company.grc.entity/Reporting.alert3Int"/>
+                    <textField id="alert4IntField" property="alert4Int" label="msg://com.company.grc.entity/Reporting.alert4Int"/>
+                    <textField id="alert5IntField" property="alert5Int" label="msg://com.company.grc.entity/Reporting.alert5Int"/>
+                    <textField id="alert2IntField" property="alert2Int" label="msg://com.company.grc.entity/Reporting.alert2Int" readOnly="true" classNames="read-only-field"/>
+                </formLayout>
+                <formLayout>
+                    <responsiveSteps>
+                        <responsiveStep minWidth="0" columns="1"/>
+                        <responsiveStep minWidth="40em" columns="4"/>
+                    </responsiveSteps>
+                    <textField id="alert7IntField" property="alert7Int" label="msg://com.company.grc.entity/Reporting.alert7Int"/>
+                    <textField id="alert8IntField" property="alert8Int" label="msg://com.company.grc.entity/Reporting.alert8Int"/>
+                    <textField id="alert9IntField" property="alert9Int" label="msg://com.company.grc.entity/Reporting.alert9Int"/>
+                    <textField id="alert6IntField" property="alert6Int" label="msg://com.company.grc.entity/Reporting.alert6Int" readOnly="true" classNames="read-only-field"/>
+                </formLayout>
+            </div>
+        </formLayout>
+    </content>
+</fragment>

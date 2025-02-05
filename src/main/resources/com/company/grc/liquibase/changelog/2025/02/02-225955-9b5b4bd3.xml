@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <addColumn tableName="REPORTING">
+            <column name="FILTRAGE_CLIENT1_INT" remarks="Nombre d'alertes Siron KYC traitées" type="INT"/>
+            <column name="FILTRAGE_CLIENT2_INT" remarks="Nombre d'alertes relatives aux listes de sanctions"
+                    type="INT"/>
+            <column name="FILTRAGE_CLIENT3_INT" remarks="Nombre d'alertes relatives aux PEP" type="INT"/>
+            <column name="FILTRAGE_CLIENT4_INT" remarks="Nombre d'alertes Siron KYC traitées" type="INT"/>
+            <column name="FILTRAGE_TRAN1_INT" remarks="Nombre d'alertes sanctions screening remontées" type="INT"/>
+            <column name="FILTRAGE_TRAN2_INT" remarks="Nombre d'alertes sanctions screening traitées" type="INT"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>
