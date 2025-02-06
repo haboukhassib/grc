@@ -6,9 +6,9 @@
 <!--        <item view="Indicator_.list" title="msg://com.company.grc.view.indicator/indicatorListView.title"/>-->
 <!--        <item id="a" view="Reporting.list" title="Overview"/>-->
         <item view="Reporting.list" title="Reporting"/>
-        <item id="b" view="Reporting.list" title="Regulatory"/>
-        <item id="c" view="Reporting.list" title="Audit"/>
-        <item id="d" view="Reporting.list" title="Risk"/>
+<!--        <item id="b" view="Reporting.list" title="Regulatory"/>-->
+<!--        <item id="c" view="Reporting.list" title="Audit"/>-->
+<!--        <item id="d" view="Reporting.list" title="Risk"/>-->
 <!--        <item view="Audit_.list" title="msg://com.company.grc.view.auditrecommendation/auditRecommendationListView.title"/>-->
     </menu>
     <menu id="application-masterdata" title="Master Data" icon="ARCHIVE">

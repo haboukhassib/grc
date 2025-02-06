@@ -10,8 +10,11 @@ import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.router.Route;
 import io.jmix.core.security.CurrentAuthentication;
 import io.jmix.flowui.fragment.Fragment;
+import io.jmix.flowui.model.DataLoader;
 import io.jmix.flowui.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.Objects;
 
 @Route(value = "reportings/:id", layout = MainView.class)
 @ViewController(id = "Reporting.detail")
@@ -19,6 +22,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 @EditedEntityContainer("reportingDc")
 public class ReportingDetailView extends StandardDetailView<Reporting> {
 
+
+    @ViewComponent
+    private DataLoader organizationDl;
     @Autowired
     private ViewUtil viewUtil;
 
@@ -42,9 +48,17 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
         event.getEntity().setUser(user);
     }
 
-
     @Subscribe
     public void onBeforeShow(final BeforeShowEvent event) {
+
+        String currentUsername = currentAuthentication.getUser().getUsername();
+
+        if (Objects.equals(currentUsername, "admin")) {
+            organizationDl.setQuery("select e from Organization e");
+        } else {
+        organizationDl.setParameter("current_user", currentUsername);
+        }
+            organizationDl.load();
         // Kyc details
         viewUtil.setIcon(kycDetails, kycFragment.getKyc3IntField(), kycFragment.getKyc4IntField(), kycFragment.getKyc5IntField(), kycFragment.getKyc7IntField(), kycFragment.getKyc8IntField(), kycFragment.getKyc9IntField());
         kycFragment.getKyc3IntField().addValueChangeListener(e -> updateState());

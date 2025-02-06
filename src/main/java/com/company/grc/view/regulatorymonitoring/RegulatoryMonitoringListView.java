@@ -11,5 +11,6 @@ import io.jmix.flowui.view.*;
 @ViewDescriptor(path = "regulatory-monitoring-list-view.xml")
 @LookupComponent("regulatoryMonitoringsDataGrid")
 @DialogMode(width = "64em")
+
 public class RegulatoryMonitoringListView extends StandardListView<RegulatoryMonitoring> {
 }

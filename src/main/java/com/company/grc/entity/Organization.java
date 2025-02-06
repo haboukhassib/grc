@@ -10,7 +10,8 @@ import java.util.UUID;
 
 @JmixEntity
 @Table(name = "ORGANIZATION", indexes = {
-        @Index(name = "IDX_ORGANIZATION_MAIN_USER", columnList = "MAIN_USER_ID")
+        @Index(name = "IDX_ORGANIZATION_MAIN_USER", columnList = ""),
+        @Index(name = "IDX_ORGANIZATION_", columnList = "")
 })
 @Entity
 public class Organization {
@@ -28,9 +29,8 @@ public class Organization {
     @NotNull
     @Column(name = "COUNTRY", nullable = false)
     private String country;
-    @JoinColumn(name = "MAIN_USER_ID", nullable = false)
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MAIN_USER_ID")
     private User mainUser;
 
     public User getMainUser() {

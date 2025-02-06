@@ -7,7 +7,7 @@
                   class="com.company.grc.entity.Reporting">
             <fetchPlan extends="_base">
                 <property name="organization" fetchPlan="_instance_name"/>
-                <property name="user" fetchPlan="_instance_name"/>
+                <property name="user" fetchPlan="_base"/>
                 <property name="regulatoryMonitoring" fetchPlan="_base"/>
                 <property name="auditRecommendation" fetchPlan="_base"/>
             </fetchPlan>
@@ -18,7 +18,7 @@
         <collection id="organizationDc" class="com.company.grc.entity.Organization">
             <loader id="organizationDl">
                 <query>
-                    <![CDATA[select e from Organization e]]>
+                    <![CDATA[select e from Organization e where e.mainUser.username=:current_user]]>
                 </query>
             </loader>
         </collection>
@@ -40,11 +40,17 @@
                         <responsiveStep minWidth="0" columns="1"/>
                         <responsiveStep minWidth="40em" columns="3"/>
                     </responsiveSteps>
-                    <entityComboBox id="organizationField" property="organization" dataContainer="reportingDc" itemsContainer="organizationDc"/>
+                    <entityComboBox id="organizationField" property="organization"
+                                    dataContainer="reportingDc" itemsContainer="organizationDc"/>
                     <select id="yearField" property="year"/>
                     <select id="monthField" property="month"/>
-                    <textField id="userField" property="user" visible="false"/>
+<!--                    <textField id="userField" property="user" visible="true"/>-->
 
+                    <entityPicker id="userField" property="user" dataContainer="reportingDc">
+                        <actions>
+                            <action id="lookup" type="entity_lookup"/>
+                        </actions>
+                    </entityPicker>
                 </formLayout>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
