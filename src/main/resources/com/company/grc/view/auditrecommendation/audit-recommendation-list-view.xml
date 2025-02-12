@@ -9,7 +9,7 @@
             <fetchPlan extends="_base"/>
             <loader id="auditRecommendationsDl" readOnly="true">
                 <query>
-                    <![CDATA[select e from Audit_ e]]>
+                    <![CDATA[select e from AuditRecommendation e]]>
                 </query>
             </loader>
         </collection>
@@ -49,6 +49,14 @@
             <columns resizable="true">
                 <column property="auditorName"/>
                 <column property="auditDate"/>
+                <column property="auditTheme"/>
+                <column property="auditReportDate"/>
+                <column property="auditSanction"/>
+                <column property="totalNbReco"/>
+                <column property="totalNbRecoClosed"/>
+                <column property="additionalComment"/>
+                \
+
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

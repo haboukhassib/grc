@@ -26,7 +26,13 @@
             </responsiveSteps>
             <textField id="auditorNameField" property="auditorName"/>
             <datePicker id="auditDateField" property="auditDate"/>
+            <textField id="auditThemeField" property="auditTheme"/>
+            <datePicker id="auditReportDateField" property="auditReportDate"/>
+            <textField id="auditSanctionField" property="auditSanction"/>
+            <textField id="totalNbRecoField" property="totalNbReco"/>
+            <textField id="totalNbRecoClosedField" property="totalNbRecoClosed"/>
             <textField id="reportingField" property="reporting"/>
+            <textArea id="additionalCommentField" colspan="2" height="6em" width="100%" property="additionalComment"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

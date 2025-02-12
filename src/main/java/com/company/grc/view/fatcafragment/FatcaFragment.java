@@ -1,9 +1,9 @@
-package com.company.grc.view.centiffragment;
+package com.company.grc.view.fatcafragment;
 
 import io.jmix.flowui.component.formlayout.JmixFormLayout;
 import io.jmix.flowui.fragment.Fragment;
 import io.jmix.flowui.fragment.FragmentDescriptor;
 
-@FragmentDescriptor("centif-fragment.xml")
-public class CentifFragment extends Fragment<JmixFormLayout> {
+@FragmentDescriptor("fatca-fragment.xml")
+public class FatcaFragment extends Fragment<JmixFormLayout> {
 }

@@ -9,7 +9,7 @@ import io.jmix.flowui.view.ViewController;
 import io.jmix.flowui.view.ViewDescriptor;
 
 @Route(value = "auditRecommendations/:id", layout = MainView.class)
-@ViewController(id = "Audit_.detail")
+@ViewController(id = "AuditRecommendation.detail")
 @ViewDescriptor(path = "audit-recommendation-detail-view.xml")
 @EditedEntityContainer("auditRecommendationDc")
 public class AuditRecommendationDetailView extends StandardDetailView<AuditRecommendation> {

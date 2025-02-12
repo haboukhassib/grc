@@ -4,14 +4,14 @@
         <instance id="reportingDc" class="com.company.grc.entity.Reporting" provided="true"/>
     </data>
     <content>
-        <formLayout id="centifForm" dataContainer="reportingDc">
+        <formLayout id="pdpForm" dataContainer="reportingDc">
             <responsiveSteps>
                 <responsiveStep minWidth="0" columns="1"/>
                 <responsiveStep minWidth="40em" columns="3"/>
             </responsiveSteps>
-            <textField id="centif1IntField" property="centif1Int" label="msg://com.company.grc.entity/Reporting.centif1Int"/>
-            <textField id="centif2IntField" property="centif2Int" label="msg://com.company.grc.entity/Reporting.centif2Int"/>
-            <textField id="centif3IntField" property="centif3Int" label="msg://com.company.grc.entity/Reporting.centif3Int"/>
+            <textField id="pdp1IntField" property="pdp1Int" label="msg://com.company.grc.entity/Reporting.pdp1Int"/>
+            <textField id="pdp2IntField" property="pdp2Int" label="msg://com.company.grc.entity/Reporting.pdp2Int"/>
+            <textField id="pdp3IntField" property="pdp3Int" label="msg://com.company.grc.entity/Reporting.pdp3Int"/>
         </formLayout>
     </content>
 </fragment>

@@ -7,7 +7,7 @@ import io.jmix.flowui.view.*;
 
 
 @Route(value = "auditRecommendations", layout = MainView.class)
-@ViewController(id = "Audit_.list")
+@ViewController(id = "AuditRecommendation.list")
 @ViewDescriptor(path = "audit-recommendation-list-view.xml")
 @LookupComponent("auditRecommendationsDataGrid")
 @DialogMode(width = "64em")
