@@ -1,6 +1,7 @@
 package com.company.grc.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.Comment;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -9,10 +10,10 @@ import java.time.LocalDate;
 import java.util.UUID;
 
 @JmixEntity
-@Table(name = "AUDIT_", indexes = {
-        @Index(name = "IDX_AUDIT__REPORTING", columnList = "REPORTING_ID")
+@Table(name = "AUDIT_RECOMMENDATION", indexes = {
+        @Index(name = "IDX_AUDIT_RECOMMENDATION_REPORTING", columnList = "REPORTING_ID")
 })
-@Entity(name = "Audit_")
+@Entity
 public class AuditRecommendation {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
@@ -24,6 +25,22 @@ public class AuditRecommendation {
     @Column(name = "AUDIT_DATE", nullable = false)
     @NotNull
     private LocalDate auditDate;
+    @Column(name = "AUDIT_THEME")
+    private String auditTheme;
+    @Column(name = "AUDIT_REPORT_DATE")
+    private LocalDate auditReportDate;
+    @Comment("Prononcé de sanctions")
+    @Column(name = "AUDIT_SANCTION")
+    private String auditSanction;
+    @Comment("Nombre total de recommandations")
+    @Column(name = "TOTAL_NB_RECO")
+    private String totalNbReco;
+    @Comment("Nombre de recommandations clôturées")
+    @Column(name = "TOTAL_NB_RECO_CLOSED")
+    private String totalNbRecoClosed;
+    @Column(name = "ADDITIONAL_COMMENT")
+    @Lob
+    private String additionalComment;
     @JoinColumn(name = "REPORTING_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Reporting reporting;
@@ -34,6 +51,54 @@ public class AuditRecommendation {
 
     public void setReporting(Reporting reporting) {
         this.reporting = reporting;
+    }
+
+    public String getAdditionalComment() {
+        return additionalComment;
+    }
+
+    public void setAdditionalComment(String additionalComment) {
+        this.additionalComment = additionalComment;
+    }
+
+    public String getTotalNbRecoClosed() {
+        return totalNbRecoClosed;
+    }
+
+    public void setTotalNbRecoClosed(String totalNbRecoClosed) {
+        this.totalNbRecoClosed = totalNbRecoClosed;
+    }
+
+    public String getTotalNbReco() {
+        return totalNbReco;
+    }
+
+    public void setTotalNbReco(String totalNbReco) {
+        this.totalNbReco = totalNbReco;
+    }
+
+    public String getAuditSanction() {
+        return auditSanction;
+    }
+
+    public void setAuditSanction(String auditSanction) {
+        this.auditSanction = auditSanction;
+    }
+
+    public LocalDate getAuditReportDate() {
+        return auditReportDate;
+    }
+
+    public void setAuditReportDate(LocalDate auditReportDate) {
+        this.auditReportDate = auditReportDate;
+    }
+
+    public String getAuditTheme() {
+        return auditTheme;
+    }
+
+    public void setAuditTheme(String auditTheme) {
+        this.auditTheme = auditTheme;
     }
 
     public LocalDate getAuditDate() {

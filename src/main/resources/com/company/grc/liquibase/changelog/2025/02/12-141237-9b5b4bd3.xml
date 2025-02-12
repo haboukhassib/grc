@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <createIndex indexName="IDX_AUDIT_RECOMMENDATION_REPORTING" tableName="AUDIT_RECOMMENDATION">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="AUDIT_RECOMMENDATION"
+                                 constraintName="FK_AUDIT_RECOMMENDATION_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="2" author="GRC">
+        <createIndex indexName="IDX_INCIDENT_TOOL_REPORTING" tableName="INCIDENT_TOOL">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="INCIDENT_TOOL"
+                                 constraintName="FK_INCIDENT_TOOL_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="3" author="GRC">
+        <createIndex indexName="IDX_NEW_PRODUCT_ACTIVITY_REPORTING" tableName="NEW_PRODUCT_ACTIVITY">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="NEW_PRODUCT_ACTIVITY"
+                                 constraintName="FK_NEW_PRODUCT_ACTIVITY_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="4" author="GRC">
+        <createIndex indexName="IDX_ORGANIZATION_UNQ" tableName="ORGANIZATION" unique="true">
+            <column name="NAME"/>
+            <column name="MAIN_USER_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="5" author="GRC">
+        <createIndex indexName="IDX_SANCTION_PENALTY_REPORTING" tableName="SANCTION_PENALTY">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="SANCTION_PENALTY"
+                                 constraintName="FK_SANCTION_PENALTY_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="6" author="GRC">
+        <createIndex indexName="IDX_TRAINING_AWARENESS_REPORTING" tableName="TRAINING_AWARENESS">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="TRAINING_AWARENESS"
+                                 constraintName="FK_TRAINING_AWARENESS_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="7" author="GRC">
+        <dropTable cascadeConstraints="true" tableName="audit_"/>
+    </changeSet>
+    <changeSet id="8" author="GRC">
+        <setColumnRemarks columnDataType="date" columnName="EFFECTIVE_DATE" remarks="Date d'effet"
+                          tableName="REGULATORY_MONITORING"/>
+    </changeSet>
+    <changeSet id="9" author="GRC">
+        <setColumnRemarks columnDataType="varchar(255)" columnName="LEGAL_TEXT_NAME"
+                          remarks="Intitulé du texte relatif aux sujets conformité" tableName="REGULATORY_MONITORING"/>
+    </changeSet>
+    <changeSet id="10" author="GRC">
+        <setColumnRemarks columnDataType="varchar(255)" columnName="TEXT_SUBJECT" remarks="Objet du texte"
+                          tableName="REGULATORY_MONITORING"/>
+    </changeSet>
+</databaseChangeLog>

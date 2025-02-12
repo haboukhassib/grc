@@ -9,12 +9,9 @@ import com.company.grc.view.main.MainView;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.router.Route;
 import io.jmix.core.security.CurrentAuthentication;
-import io.jmix.flowui.fragment.Fragment;
 import io.jmix.flowui.model.DataLoader;
 import io.jmix.flowui.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import java.util.Objects;
 
 @Route(value = "reportings/:id", layout = MainView.class)
 @ViewController(id = "Reporting.detail")
@@ -22,9 +19,9 @@ import java.util.Objects;
 @EditedEntityContainer("reportingDc")
 public class ReportingDetailView extends StandardDetailView<Reporting> {
 
-
     @ViewComponent
     private DataLoader organizationDl;
+
     @Autowired
     private ViewUtil viewUtil;
 
@@ -39,6 +36,7 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
 
     @ViewComponent
     private Details alertDetails;
+
     @Autowired
     private CurrentAuthentication currentAuthentication;
 
@@ -52,12 +50,7 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
     public void onBeforeShow(final BeforeShowEvent event) {
 
         String currentUsername = currentAuthentication.getUser().getUsername();
-
-        if (Objects.equals(currentUsername, "admin")) {
-            organizationDl.setQuery("select e from Organization e");
-        } else {
-        organizationDl.setParameter("current_user", currentUsername);
-        }
+            organizationDl.setParameter("current_user", currentUsername);
             organizationDl.load();
         // Kyc details
         viewUtil.setIcon(kycDetails, kycFragment.getKyc3IntField(), kycFragment.getKyc4IntField(), kycFragment.getKyc5IntField(), kycFragment.getKyc7IntField(), kycFragment.getKyc8IntField(), kycFragment.getKyc9IntField());
@@ -76,6 +69,11 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
         alertFragment.getalert7IntField().addValueChangeListener(e -> updateState());
         alertFragment.getalert8IntField().addValueChangeListener(e -> updateState());
         alertFragment.getalert9IntField().addValueChangeListener(e -> updateState());
+    }
+
+    @Subscribe
+    public void onBeforeSave(final BeforeSaveEvent event) {
+
     }
 
 

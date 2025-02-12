@@ -1,6 +1,7 @@
 package com.company.grc.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.Comment;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -18,11 +19,14 @@ public class RegulatoryMonitoring {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+    @Comment("Intitulé du texte relatif aux sujets conformité")
     @Column(name = "LEGAL_TEXT_NAME", nullable = false)
     @NotNull
     private String legalTextName;
+    @Comment("Objet du texte")
     @Column(name = "TEXT_SUBJECT")
     private String textSubject;
+    @Comment("Date d'effet")
     @Column(name = "EFFECTIVE_DATE")
     private LocalDate effectiveDate;
     @JoinColumn(name = "REPORTING_ID")

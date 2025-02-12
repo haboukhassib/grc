@@ -120,12 +120,241 @@ public class Reporting {
     @Comment("Nombre d'alertes sanctions screening traitées")
     @Column(name = "FILTRAGE_TRAN2_INT")
     private Integer filtrageTran2Int;
+    @Comment("Nombre total des DOS")
+    @Column(name = "CENTIF1_INT")
+    private Integer centif1Int;
+    @Comment("Nombre total demandes d’information CENTIF")
+    @Column(name = "CENTIF2_INT")
+    private Integer centif2Int;
+    @Comment("Nombre de soupçons internes remontés")
+    @Column(name = "CENTIF3_INT")
+    private Integer centif3Int;
+    @Comment("Nouvelles EER assujettis à FATCA")
+    @Column(name = "FATCA1_INT")
+    private Integer fatca1Int;
+    @Comment("Stock de clients assujettis à FATCA")
+    @Column(name = "FATCA2_INT")
+    private Integer fatca2Int;
+    @Comment("Stock de clients récalcitrants")
+    @Column(name = "FATCA3_INT")
+    private Integer fatca3Int;
+    @Comment("Nombre de traitements éligibles aux déclarations APDP")
+    @Column(name = "PDP1_INT")
+    private Integer pdp1Int;
+    @Comment("Nombre de traitements dossiers déposés à la APDP")
+    @Column(name = "PDP2_INT")
+    private Integer pdp2Int;
+    @Comment("Nombre d'autorisations reçues de la part de la APDP")
+    @Column(name = "PDP3_INT")
+    private Integer pdp3Int;
+    @Comment("Nombre contrôles prévus période")
+    @Column(name = "CTRL_CONF1_INT")
+    private Integer ctrlConf1Int;
+    @Comment("Nombre de contrôles réalisés période")
+    @Column(name = "CTRL_CONF2_INT")
+    private Integer ctrlConf2Int;
+    @Comment("Nombre de dossiers contrôlés période")
+    @Column(name = "CTRL_CONF3_INT")
+    private Integer ctrlConf3Int;
+    @Comment("Nombre de dossiers contrôlés conformes période")
+    @Column(name = "CTRL_CONF4_INT")
+    private Integer ctrlConf4Int;
+    @Comment("Nombre total de recos émises")
+    @Column(name = "CTRL_CONF5_INT")
+    private Integer ctrlConf5Int;
+    @Comment("Nombre de Recos Clôturées")
+    @Column(name = "CTRL_CONF6_INT")
+    private Integer ctrlConf6Int;
+    @Comment("Commentaire Contrôle Conformité")
+    @Column(name = "CTRL_CONF7_INT")
+    @Lob
+    private String ctrlConf7Int;
+    @Composition
+    @OneToMany(mappedBy = "reporting")
+    private List<AuditRecommendation> auditRecommendation;
     @Composition
     @OneToMany(mappedBy = "reporting")
     private List<RegulatoryMonitoring> regulatoryMonitoring;
     @Composition
     @OneToMany(mappedBy = "reporting")
-    private List<AuditRecommendation> auditRecommendation;
+    private List<NewProductActivity> newProductActivity;
+    @Composition
+    @OneToMany(mappedBy = "reporting")
+    private List<SanctionPenalty> sanctionPenalty;
+    @Composition
+    @OneToMany(mappedBy = "reporting")
+    private List<IncidentTool> incidentTool;
+    @Composition
+    @OneToMany(mappedBy = "reporting")
+    private List<TrainingAwareness> trainingAwareness;
+
+    public List<AuditRecommendation> getAuditRecommendation() {
+        return auditRecommendation;
+    }
+
+    public void setAuditRecommendation(List<AuditRecommendation> auditRecommendation) {
+        this.auditRecommendation = auditRecommendation;
+    }
+
+    public List<IncidentTool> getIncidentTool() {
+        return incidentTool;
+    }
+
+    public void setIncidentTool(List<IncidentTool> incidentTool) {
+        this.incidentTool = incidentTool;
+    }
+
+    public List<TrainingAwareness> getTrainingAwareness() {
+        return trainingAwareness;
+    }
+
+    public void setTrainingAwareness(List<TrainingAwareness> trainingAwareness) {
+        this.trainingAwareness = trainingAwareness;
+    }
+
+    public List<SanctionPenalty> getSanctionPenalty() {
+        return sanctionPenalty;
+    }
+
+    public void setSanctionPenalty(List<SanctionPenalty> sanctionPenalty) {
+        this.sanctionPenalty = sanctionPenalty;
+    }
+
+    public List<NewProductActivity> getNewProductActivity() {
+        return newProductActivity;
+    }
+
+    public void setNewProductActivity(List<NewProductActivity> newProductActivity) {
+        this.newProductActivity = newProductActivity;
+    }
+
+    public String getCtrlConf7Int() {
+        return ctrlConf7Int;
+    }
+
+    public void setCtrlConf7Int(String ctrlConf7Int) {
+        this.ctrlConf7Int = ctrlConf7Int;
+    }
+
+    public Integer getCtrlConf6Int() {
+        return ctrlConf6Int;
+    }
+
+    public void setCtrlConf6Int(Integer ctrlConf6Int) {
+        this.ctrlConf6Int = ctrlConf6Int;
+    }
+
+    public void setCtrlConf5Int(Integer ctrlConf5Int) {
+        this.ctrlConf5Int = ctrlConf5Int;
+    }
+
+    public Integer getCtrlConf5Int() {
+        return ctrlConf5Int;
+    }
+
+    public Integer getCtrlConf4Int() {
+        return ctrlConf4Int;
+    }
+
+    public void setCtrlConf4Int(Integer ctrlConf4Int) {
+        this.ctrlConf4Int = ctrlConf4Int;
+    }
+
+    public Integer getCtrlConf3Int() {
+        return ctrlConf3Int;
+    }
+
+    public void setCtrlConf3Int(Integer ctrlConf3Int) {
+        this.ctrlConf3Int = ctrlConf3Int;
+    }
+
+    public Integer getCtrlConf2Int() {
+        return ctrlConf2Int;
+    }
+
+    public void setCtrlConf2Int(Integer ctrlConf2Int) {
+        this.ctrlConf2Int = ctrlConf2Int;
+    }
+
+    public Integer getCtrlConf1Int() {
+        return ctrlConf1Int;
+    }
+
+    public void setCtrlConf1Int(Integer ctrlConf1Int) {
+        this.ctrlConf1Int = ctrlConf1Int;
+    }
+
+    public Integer getPdp3Int() {
+        return pdp3Int;
+    }
+
+    public void setPdp3Int(Integer pdp3Int) {
+        this.pdp3Int = pdp3Int;
+    }
+
+    public Integer getPdp2Int() {
+        return pdp2Int;
+    }
+
+    public void setPdp2Int(Integer pdp2Int) {
+        this.pdp2Int = pdp2Int;
+    }
+
+    public Integer getPdp1Int() {
+        return pdp1Int;
+    }
+
+    public void setPdp1Int(Integer pdp1Int) {
+        this.pdp1Int = pdp1Int;
+    }
+
+    public Integer getFatca3Int() {
+        return fatca3Int;
+    }
+
+    public void setFatca3Int(Integer fatca3Int) {
+        this.fatca3Int = fatca3Int;
+    }
+
+    public Integer getFatca2Int() {
+        return fatca2Int;
+    }
+
+    public void setFatca2Int(Integer fatca2Int) {
+        this.fatca2Int = fatca2Int;
+    }
+
+    public Integer getFatca1Int() {
+        return fatca1Int;
+    }
+
+    public void setFatca1Int(Integer fatca1Int) {
+        this.fatca1Int = fatca1Int;
+    }
+
+    public Integer getCentif3Int() {
+        return centif3Int;
+    }
+
+    public void setCentif3Int(Integer centif3Int) {
+        this.centif3Int = centif3Int;
+    }
+
+    public Integer getCentif2Int() {
+        return centif2Int;
+    }
+
+    public void setCentif2Int(Integer centif2Int) {
+        this.centif2Int = centif2Int;
+    }
+
+    public Integer getCentif1Int() {
+        return centif1Int;
+    }
+
+    public void setCentif1Int(Integer centif1Int) {
+        this.centif1Int = centif1Int;
+    }
 
     public Integer getFiltrageTran2Int() {
         return filtrageTran2Int;
@@ -245,14 +474,6 @@ public class Reporting {
 
     public void setAlert1Int(Integer alert1Int) {
         this.alert1Int = alert1Int;
-    }
-
-    public List<AuditRecommendation> getAuditRecommendation() {
-        return auditRecommendation;
-    }
-
-    public void setAuditRecommendation(List<AuditRecommendation> auditRecommendation) {
-        this.auditRecommendation = auditRecommendation;
     }
 
     public Integer getKyc9Int() {

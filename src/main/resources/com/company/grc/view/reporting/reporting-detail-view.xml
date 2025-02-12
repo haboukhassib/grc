@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<view xmlns="http://jmix.io/schema/flowui/view" xmlns:charts="http://jmix.io/schema/charts/ui"
+<view xmlns="http://jmix.io/schema/flowui/view"
       title="msg://reportingDetailView.title"
       focusComponent="form">
     <data>
@@ -15,6 +15,7 @@
             <collection id="regulatoryMonitoringDc" property="regulatoryMonitoring"/>
             <collection id="auditRecommendationDc" property="auditRecommendation"/>
         </instance>
+
         <collection id="organizationDc" class="com.company.grc.entity.Organization">
             <loader id="organizationDl">
                 <query>
@@ -32,25 +33,18 @@
     </actions>
 
     <layout expand="contentBox" alignItems="STRETCH">
-
         <vbox id="contentBox" css="overflow: auto;">
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <formLayout id="form" dataContainer="reportingDc">
                     <responsiveSteps>
                         <responsiveStep minWidth="0" columns="1"/>
-                        <responsiveStep minWidth="40em" columns="3"/>
+                        <responsiveStep minWidth="40em" columns="4"/>
                     </responsiveSteps>
                     <entityComboBox id="organizationField" property="organization"
                                     dataContainer="reportingDc" itemsContainer="organizationDc"/>
                     <select id="yearField" property="year"/>
                     <select id="monthField" property="month"/>
-<!--                    <textField id="userField" property="user" visible="true"/>-->
-
-                    <entityPicker id="userField" property="user" dataContainer="reportingDc">
-                        <actions>
-                            <action id="lookup" type="entity_lookup"/>
-                        </actions>
-                    </entityPicker>
+                    <textField id="userField" property="user.username" readOnly="true" />
                 </formLayout>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
@@ -74,6 +68,10 @@
                     <fragment id="filtrageFragment" class="com.company.grc.view.filtragefragment.FiltrageFragment"/>
                 </details>
             </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details summaryText="CENTIF" alignSelf="STRETCH">
+                    <fragment id="centifFragment" class="com.company.grc.view.centiffragment.CentifFragment"/>
+                </details>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <details id="regulatoryMonitoring" summaryText="Regulatory Monitoring" alignSelf="STRETCH">
                     <hbox id="buttonsPanel" classNames="buttons-panel">
@@ -143,6 +141,7 @@
             <details id="incidents" summaryText="Incidents">
                 <h1>TODO</h1>
             </details>
+        </vbox>
         </vbox>
         <vbox>
             <hbox id="detailActions" classNames="contrast-panel" width="98.5%" padding="true">
