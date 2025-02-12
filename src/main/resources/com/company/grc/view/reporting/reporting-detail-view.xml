@@ -69,10 +69,6 @@
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="CENTIF" alignSelf="STRETCH">
-                    <fragment id="centifFragment" class="com.company.grc.view.centiffragment.CentifFragment"/>
-                </details>
-            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <details id="regulatoryMonitoring" summaryText="Regulatory Monitoring" alignSelf="STRETCH">
                     <hbox id="buttonsPanel" classNames="buttons-panel">
                         <button action="regulatoryMonitoringDataGrid.create"/>
@@ -141,7 +137,6 @@
             <details id="incidents" summaryText="Incidents">
                 <h1>TODO</h1>
             </details>
-        </vbox>
         </vbox>
         <vbox>
             <hbox id="detailActions" classNames="contrast-panel" width="98.5%" padding="true">
