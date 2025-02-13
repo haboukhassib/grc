@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/flowui/fragment">
+    <data>
+        <collection id="auditRecommendationDc" class="com.company.grc.entity.AuditRecommendation" provided="true"/>
+    </data>
+    <content>
+        <vbox>
+            <hbox id="buttonsPanelAudit" classNames="buttons-panel">
+                <button action="auditRecommendationsDataGrid.create"/>
+                <button action="auditRecommendationsDataGrid.edit"/>
+                <button action="auditRecommendationsDataGrid.remove"/>
+            </hbox>
+            <dataGrid id="auditRecommendationsDataGrid" dataContainer="auditRecommendationDc" minWidth="100px"
+                      width="100%">
+                <actions>
+                    <action id="create" type="list_create">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
+                    <action id="edit" type="list_edit">
+                        <properties>
+                            <property name="openMode" value="DIALOG"/>
+                        </properties>
+                    </action>
+                    <action id="remove" type="list_remove"/>
+                </actions>
+                <columns>
+                    <column property="auditorName"/>
+                    <column property="auditDate"/>
+                    <column property="auditTheme"/>
+                    <column property="auditReportDate"/>
+                    <column property="auditSanction"/>
+                    <column property="totalNbReco"/>
+                    <column property="totalNbRecoClosed"/>
+                    <column property="additionalComment"/>
+
+                </columns>
+            </dataGrid>
+        </vbox>
+    </content>
+</fragment>

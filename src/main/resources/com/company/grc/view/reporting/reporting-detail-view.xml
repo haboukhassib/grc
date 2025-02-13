@@ -90,74 +90,14 @@
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <details id="regulatoryMonitoring" summaryText="Regulatory Monitoring" alignSelf="STRETCH">
-                    <hbox id="buttonsPanel" classNames="buttons-panel">
-                        <button action="regulatoryMonitoringDataGrid.create"/>
-                        <button action="regulatoryMonitoringDataGrid.edit"/>
-                        <button action="regulatoryMonitoringDataGrid.remove"/>
-                    </hbox>
-                    <dataGrid id="regulatoryMonitoringDataGrid" dataContainer="regulatoryMonitoringDc" width="100%"
-                              minHeight="20em">
-                        <actions>
-                            <action id="create" type="list_create">
-                                <properties>
-                                    <property name="openMode" value="DIALOG"/>
-                                </properties>
-                            </action>
-                            <action id="edit" type="list_edit">
-                                <properties>
-                                    <property name="openMode" value="DIALOG"/>
-                                </properties>
-                            </action>
-                            <action id="remove" type="list_remove"/>
-                        </actions>
-                        <columns>
-                            <column property="legalTextName"/>
-                            <column property="textSubject"/>
-                            <column property="effectiveDate"/>
-                        </columns>
-                    </dataGrid>
+                    <fragment id="regulatorymonitoringFragment" class="com.company.grc.view.regulatorymonitoringfragment.RegulatorymonitoringFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <details id="auditRecommendations" summaryText="Audit Recommendations" alignSelf="STRETCH">
-
-                    <hbox id="buttonsPanelAudit" classNames="buttons-panel">
-                        <button action="auditRecommendationsDataGrid.create"/>
-                        <button action="auditRecommendationsDataGrid.edit"/>
-                        <button action="auditRecommendationsDataGrid.remove"/>
-                    </hbox>
-                    <dataGrid id="auditRecommendationsDataGrid" dataContainer="auditRecommendationDc" minWidth="100px"
-                              width="100%">
-                        <actions>
-                            <action id="create" type="list_create">
-                                <properties>
-                                    <property name="openMode" value="DIALOG"/>
-                                </properties>
-                            </action>
-                            <action id="edit" type="list_edit">
-                                <properties>
-                                    <property name="openMode" value="DIALOG"/>
-                                </properties>
-                            </action>
-                            <action id="remove" type="list_remove"/>
-                        </actions>
-                        <columns>
-                            <column property="auditorName"/>
-                            <column property="auditDate"/>
-                            <column property="auditTheme"/>
-                            <column property="auditReportDate"/>
-                            <column property="auditSanction"/>
-                            <column property="totalNbReco"/>
-                            <column property="totalNbRecoClosed"/>
-                            <column property="additionalComment"/>
-
-                        </columns>
-                    </dataGrid>
+                    <fragment id="auditrecommendationFragment" class="com.company.grc.view.auditrecommendationfragment.AuditrecommendationFragment"/>
                 </details>
             </vbox>
-
-
-
             <details id="newProduct" summaryText="New Products">
                 <h1>TODO</h1>
             </details>
