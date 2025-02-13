@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/flowui/fragment">
     <data>
-        <collection id="regulatoryMonitoringDc" class="com.company.grc.entity.RegulatoryMonitoring" provided="true"/>
+        <collection id="newProductActivityDc" class="com.company.grc.entity.NewProductActivity" provided="true"/>
     </data>
     <content>
         <vbox>
-            <hbox id="buttonsPanelRegulatoryMonitoring" classNames="buttons-panel">
-                <button action="regulatoryMonitoringDataGrid.create"/>
-                <button action="regulatoryMonitoringDataGrid.edit"/>
-                <button action="regulatoryMonitoringDataGrid.remove"/>
+            <hbox id="buttonsPanelnewProductActivities" classNames="buttons-panel">
+                <button action="newProductActivitiesDataGrid.create"/>
+                <button action="newProductActivitiesDataGrid.edit"/>
+                <button action="newProductActivitiesDataGrid.remove"/>
             </hbox>
-            <dataGrid id="regulatoryMonitoringDataGrid" dataContainer="regulatoryMonitoringDc" width="100%" columnReorderingAllowed="true">
+            <dataGrid id="newProductActivitiesDataGrid" dataContainer="newProductActivityDc" width="100%" columnReorderingAllowed="true">
                 <actions>
                     <action id="create" type="list_create">
                         <properties>
@@ -25,9 +25,11 @@
                     <action id="remove" type="list_remove"/>
                 </actions>
                 <columns resizable="true">
-                    <column property="legalTextName"/>
-                    <column property="textSubject"/>
-                    <column property="effectiveDate"/>
+                    <column property="productActivityName"/>
+                    <column property="productActivityDesc"/>
+                    <column property="validationComplianceSubmitted"/>
+                    <column property="validationComplianceDone"/>
+                    <column property="newProductActivityComment"/>
                 </columns>
             </dataGrid>
         </vbox>

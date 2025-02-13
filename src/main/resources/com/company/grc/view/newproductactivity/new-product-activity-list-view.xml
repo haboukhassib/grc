@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://newProductActivityListView.title"
+      focusComponent="newProductActivitiesDataGrid">
+    <data>
+        <collection id="newProductActivitiesDc"
+                    class="com.company.grc.entity.NewProductActivity">
+            <fetchPlan extends="_base"/>
+            <loader id="newProductActivitiesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from NewProductActivity e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="newProductActivitiesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createButton" action="newProductActivitiesDataGrid.create"/>
+            <button id="editButton" action="newProductActivitiesDataGrid.edit"/>
+            <button id="removeButton" action="newProductActivitiesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="newProductActivitiesDl"/>
+        </hbox>
+        <dataGrid id="newProductActivitiesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="newProductActivitiesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="productActivityName"/>
+                <column property="productActivityDesc"/>
+                <column property="validationComplianceSubmitted"/>
+                <column property="validationComplianceDone"/>
+                <column property="newProductActivityComment"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

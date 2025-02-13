@@ -7,7 +7,6 @@
     <menu id="application-masterdata" title="Master Data" icon="ARCHIVE">
         <item view="Organization.list" title="msg://com.company.grc.view.organization/organizationListView.title"/>
         <item view="User.list" title="msg://com.company.grc.view.user/UserListView.title"/>
-
     </menu>
 
 </menu-config>

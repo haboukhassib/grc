@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
-      title="msg://regulatoryMonitoringDetailView.title"
+      title="msg://incidentToolDetailView.title"
       focusComponent="form">
     <data>
-        <instance id="regulatoryMonitoringDc"
-                  class="com.company.grc.entity.RegulatoryMonitoring">
+        <instance id="incidentToolDc"
+                  class="com.company.grc.entity.IncidentTool">
             <fetchPlan extends="_base">
                 <property name="reporting" fetchPlan="_instance_name"/>
             </fetchPlan>
-            <loader id="regulatoryMonitoringDl"/>
+            <loader id="incidentToolDl"/>
         </instance>
     </data>
     <facets>
@@ -19,15 +19,17 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="regulatoryMonitoringDc">
+        <formLayout id="form" dataContainer="incidentToolDc">
             <responsiveSteps>
                 <responsiveStep minWidth="0" columns="1"/>
                 <responsiveStep minWidth="40em" columns="4"/>
             </responsiveSteps>
-            <textField id="reportingField" colspan="4" property="reporting" readOnly="true"/>
-            <textField id="legalTextNameField" colspan="2" property="legalTextName"/>
-            <textField id="textSubjectField" property="textSubject"/>
-            <datePicker id="effectiveDateField" property="effectiveDate"/>
+            <textField id="reportingField" colspan="4" property="reporting"/>
+            <textField id="toolNameField" property="toolName"/>
+            <textField id="incidentDescField" property="incidentDesc"/>
+            <datePicker id="incidentDateField" property="incidentDate"/>
+            <textField id="incidentStatusField" property="incidentStatus"/>
+            <textArea id="incidentCommentField" colspan="4" width="100%" height="6em" property="incidentComment"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

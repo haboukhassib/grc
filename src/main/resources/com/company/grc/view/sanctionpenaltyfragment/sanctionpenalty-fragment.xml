@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/flowui/fragment">
     <data>
-        <collection id="regulatoryMonitoringDc" class="com.company.grc.entity.RegulatoryMonitoring" provided="true"/>
+        <collection id="sanctionPenaltyDc" class="com.company.grc.entity.SanctionPenalty" provided="true"/>
     </data>
     <content>
         <vbox>
-            <hbox id="buttonsPanelRegulatoryMonitoring" classNames="buttons-panel">
-                <button action="regulatoryMonitoringDataGrid.create"/>
-                <button action="regulatoryMonitoringDataGrid.edit"/>
-                <button action="regulatoryMonitoringDataGrid.remove"/>
+            <hbox id="buttonsPanelSanctionPenalty" classNames="buttons-panel">
+                <button id="createButton" action="sanctionPenaltiesDataGrid.create"/>
+                <button id="editButton" action="sanctionPenaltiesDataGrid.edit"/>
+                <button id="removeButton" action="sanctionPenaltiesDataGrid.remove"/>
             </hbox>
-            <dataGrid id="regulatoryMonitoringDataGrid" dataContainer="regulatoryMonitoringDc" width="100%" columnReorderingAllowed="true">
+            <dataGrid id="sanctionPenaltiesDataGrid" dataContainer="sanctionPenaltyDc" width="100%" columnReorderingAllowed="true">
                 <actions>
                     <action id="create" type="list_create">
                         <properties>
@@ -25,9 +25,9 @@
                     <action id="remove" type="list_remove"/>
                 </actions>
                 <columns resizable="true">
-                    <column property="legalTextName"/>
-                    <column property="textSubject"/>
-                    <column property="effectiveDate"/>
+                    <column property="sanctionPurpose"/>
+                    <column property="sanctionEntityCarrier"/>
+                    <column property="sanctionDetails"/>
                 </columns>
             </dataGrid>
         </vbox>

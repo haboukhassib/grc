@@ -5,13 +5,12 @@
     </data>
     <content>
         <vbox>
-            <hbox id="buttonsPanelAudit" classNames="buttons-panel">
+            <hbox id="buttonsPanelAuditRecommendation" classNames="buttons-panel">
                 <button action="auditRecommendationsDataGrid.create"/>
                 <button action="auditRecommendationsDataGrid.edit"/>
                 <button action="auditRecommendationsDataGrid.remove"/>
             </hbox>
-            <dataGrid id="auditRecommendationsDataGrid" dataContainer="auditRecommendationDc" minWidth="100px"
-                      width="100%">
+            <dataGrid id="auditRecommendationsDataGrid" dataContainer="auditRecommendationDc" width="100%" columnReorderingAllowed="true">
                 <actions>
                     <action id="create" type="list_create">
                         <properties>
@@ -25,7 +24,7 @@
                     </action>
                     <action id="remove" type="list_remove"/>
                 </actions>
-                <columns>
+                <columns resizable="true">
                     <column property="auditorName"/>
                     <column property="auditDate"/>
                     <column property="auditTheme"/>

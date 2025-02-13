@@ -10,12 +10,16 @@
                 <property name="user" fetchPlan="_base"/>
                 <property name="regulatoryMonitoring" fetchPlan="_base"/>
                 <property name="auditRecommendation" fetchPlan="_base"/>
+                <property name="newProductActivity" fetchPlan="_base"/>
             </fetchPlan>
             <loader id="reportingDl"/>
             <collection id="regulatoryMonitoringDc" property="regulatoryMonitoring"/>
             <collection id="auditRecommendationDc" property="auditRecommendation"/>
+            <collection id="newProductActivityDc" property="newProductActivity"/>
+            <collection id="sanctionPenaltyDc" property="sanctionPenalty"/>
+            <collection id="trainingAwarenessDc" property="trainingAwareness"/>
+            <collection id="incidentToolDc" property="incidentTool"/>
         </instance>
-
         <collection id="organizationDc" class="com.company.grc.entity.Organization">
             <loader id="organizationDl">
                 <query>
@@ -31,7 +35,6 @@
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
     </actions>
-
     <layout expand="contentBox" alignItems="STRETCH">
         <vbox id="contentBox" css="overflow: auto;">
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
@@ -44,7 +47,7 @@
                                     dataContainer="reportingDc" itemsContainer="organizationDc"/>
                     <select id="yearField" property="year"/>
                     <select id="monthField" property="month"/>
-                    <textField id="userField" property="user.username" readOnly="true" />
+                    <textField id="userField" property="user.username" readOnly="true"/>
                 </formLayout>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
@@ -90,26 +93,38 @@
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <details id="regulatoryMonitoring" summaryText="Regulatory Monitoring" alignSelf="STRETCH">
-                    <fragment id="regulatorymonitoringFragment" class="com.company.grc.view.regulatorymonitoringfragment.RegulatorymonitoringFragment"/>
+                    <fragment id="regulatorymonitoringFragment"
+                              class="com.company.grc.view.regulatorymonitoringfragment.RegulatorymonitoringFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
                 <details id="auditRecommendations" summaryText="Audit Recommendations" alignSelf="STRETCH">
-                    <fragment id="auditrecommendationFragment" class="com.company.grc.view.auditrecommendationfragment.AuditrecommendationFragment"/>
+                    <fragment id="auditrecommendationFragment"
+                              class="com.company.grc.view.auditrecommendationfragment.AuditrecommendationFragment"/>
                 </details>
             </vbox>
-            <details id="newProduct" summaryText="New Products">
-                <h1>TODO</h1>
-            </details>
-            <details id="sanctions" summaryText="sanctions and penalties">
-                <h1>TODO</h1>
-            </details>
-            <details id="training" summaryText="Training">
-                <h1>TODO</h1>
-            </details>
-            <details id="incidents" summaryText="Incidents">
-                <h1>TODO</h1>
-            </details>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="newProductActivities" summaryText="New Products-Activities" alignSelf="STRETCH">
+                    <fragment id="newproductactivityFragment"
+                              class="com.company.grc.view.newproductactivityfragment.NewproductactivityFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="sanctionPenalties" summaryText="Sanctions-Penalties" alignSelf="STRETCH">
+                    <fragment id="sanctionpenaltyFragment"
+                              class="com.company.grc.view.sanctionpenaltyfragment.SanctionpenaltyFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="trainingAwareness" summaryText="Training-Awareness" alignSelf="STRETCH">
+                    <fragment id="trainingawarenessFragment" class="com.company.grc.view.trainingawarenessfragment.TrainingawarenessFragment"/>
+                </details>
+            </vbox>
+            <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
+                <details id="incidentTool" summaryText="Incident Tool" alignSelf="STRETCH">
+                    <fragment id="incidenttoolFragment" class="com.company.grc.view.incidenttoolfragment.IncidenttoolFragment"/>
+                </details>
+            </vbox>
         </vbox>
         <vbox>
             <hbox id="detailActions" classNames="contrast-panel" width="98.5%" padding="true">
@@ -117,5 +132,7 @@
                 <button id="closeButton" action="closeAction"/>
             </hbox>
         </vbox>
+
+
     </layout>
 </view>

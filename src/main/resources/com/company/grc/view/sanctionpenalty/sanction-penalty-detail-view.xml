@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <view xmlns="http://jmix.io/schema/flowui/view"
-      title="msg://regulatoryMonitoringDetailView.title"
+      title="msg://sanctionPenaltyDetailView.title"
       focusComponent="form">
     <data>
-        <instance id="regulatoryMonitoringDc"
-                  class="com.company.grc.entity.RegulatoryMonitoring">
+        <instance id="sanctionPenaltyDc"
+                  class="com.company.grc.entity.SanctionPenalty">
             <fetchPlan extends="_base">
                 <property name="reporting" fetchPlan="_instance_name"/>
             </fetchPlan>
-            <loader id="regulatoryMonitoringDl"/>
+            <loader id="sanctionPenaltyDl"/>
         </instance>
     </data>
     <facets>
@@ -19,15 +19,15 @@
         <action id="closeAction" type="detail_close"/>
     </actions>
     <layout>
-        <formLayout id="form" dataContainer="regulatoryMonitoringDc">
+        <formLayout id="form" dataContainer="sanctionPenaltyDc">
             <responsiveSteps>
                 <responsiveStep minWidth="0" columns="1"/>
-                <responsiveStep minWidth="40em" columns="4"/>
+                <responsiveStep minWidth="40em" columns="3"/>
             </responsiveSteps>
-            <textField id="reportingField" colspan="4" property="reporting" readOnly="true"/>
-            <textField id="legalTextNameField" colspan="2" property="legalTextName"/>
-            <textField id="textSubjectField" property="textSubject"/>
-            <datePicker id="effectiveDateField" property="effectiveDate"/>
+            <textField id="reportingField" colspan="3" property="reporting"/>
+            <textField id="sanctionPurposeField" property="sanctionPurpose"/>
+            <textField id="sanctionEntityCarrierField" property="sanctionEntityCarrier"/>
+            <textField id="sanctionDetailsField" property="sanctionDetails"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
