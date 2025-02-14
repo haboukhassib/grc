@@ -51,7 +51,7 @@
                 </formLayout>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="organizationDetail" summaryText="Organisation Effectif" alignSelf="STRETCH">
+                <details id="organizationDetail" summaryText="msg://com.company.grc.entity/Reporting.section.organization" alignSelf="STRETCH">
                     <fragment id="organizationFragment"
                               class="com.company.grc.view.organizationfragment.OrganizationFragment"/>
                 </details>
@@ -62,12 +62,12 @@
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="alertDetails" summaryText="Alertes" alignSelf="STRETCH">
+                <details id="alertDetails" summaryText="msg://com.company.grc.entity/Reporting.section.alertes" alignSelf="STRETCH">
                     <fragment id="alertFragment" class="com.company.grc.view.alertfragment.AlertFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="filtrageDetails" summaryText="Filtrage" alignSelf="STRETCH">
+                <details id="filtrageDetails" summaryText="msg://com.company.grc.entity/Reporting.section.filtering" alignSelf="STRETCH">
                     <fragment id="filtrageFragment" class="com.company.grc.view.filtragefragment.FiltrageFragment"/>
                 </details>
             </vbox>
@@ -87,41 +87,41 @@
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="ctrlconfDetails" summaryText="Contrôle Conformité" alignSelf="STRETCH">
+                <details id="ctrlconfDetails" summaryText="msg://com.company.grc.entity/Reporting.section.ctrlcomp" alignSelf="STRETCH">
                     <fragment id="ctrlconfFragment" class="com.company.grc.view.ctrlconffragment.CtrlconfFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="regulatoryMonitoring" summaryText="Regulatory Monitoring" alignSelf="STRETCH">
+                <details id="regulatoryMonitoring" summaryText="msg://com.company.grc.entity/Reporting.section.regulatoryMonitoring" alignSelf="STRETCH">
                     <fragment id="regulatorymonitoringFragment"
                               class="com.company.grc.view.regulatorymonitoringfragment.RegulatorymonitoringFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="auditRecommendations" summaryText="Audit Recommendations" alignSelf="STRETCH">
+                <details id="auditRecommendations" summaryText="msg://com.company.grc.entity/Reporting.section.auditRecos" alignSelf="STRETCH">
                     <fragment id="auditrecommendationFragment"
                               class="com.company.grc.view.auditrecommendationfragment.AuditrecommendationFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="newProductActivities" summaryText="New Products-Activities" alignSelf="STRETCH">
+                <details id="newProductActivities" summaryText="msg://com.company.grc.entity/Reporting.section.newProductActivity" alignSelf="STRETCH">
                     <fragment id="newproductactivityFragment"
                               class="com.company.grc.view.newproductactivityfragment.NewproductactivityFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="sanctionPenalties" summaryText="Sanctions-Penalties" alignSelf="STRETCH">
+                <details id="sanctionPenalties" summaryText="msg://com.company.grc.entity/Reporting.section.sanctionsPenalties" alignSelf="STRETCH">
                     <fragment id="sanctionpenaltyFragment"
                               class="com.company.grc.view.sanctionpenaltyfragment.SanctionpenaltyFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="trainingAwareness" summaryText="Training-Awareness" alignSelf="STRETCH">
+                <details id="trainingAwareness" summaryText="msg://com.company.grc.entity/Reporting.section.trainingAwareness" alignSelf="STRETCH">
                     <fragment id="trainingawarenessFragment" class="com.company.grc.view.trainingawarenessfragment.TrainingawarenessFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details id="incidentTool" summaryText="Incident Tool" alignSelf="STRETCH">
+                <details id="incidentTool" summaryText="msg://com.company.grc.entity/Reporting.section.incidentTool" alignSelf="STRETCH">
                     <fragment id="incidenttoolFragment" class="com.company.grc.view.incidenttoolfragment.IncidenttoolFragment"/>
                 </details>
             </vbox>

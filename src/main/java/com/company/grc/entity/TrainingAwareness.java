@@ -4,6 +4,7 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Comment;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -18,6 +19,7 @@ public class TrainingAwareness {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+    @NotNull
     @Comment("Thématique de la formation")
     @Column(name = "TRAINING_THEME")
     private String trainingTheme;

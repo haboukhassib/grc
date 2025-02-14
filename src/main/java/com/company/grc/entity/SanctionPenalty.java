@@ -4,6 +4,7 @@ import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Comment;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
@@ -17,12 +18,15 @@ public class SanctionPenalty {
     @Column(name = "ID", nullable = false)
     @Id
     private UUID id;
+    @NotNull
     @Comment("Object de la Sanction")
     @Column(name = "SANCTION_PURPOSE")
     private String sanctionPurpose;
+    @NotNull
     @Comment("Entité ayant réalisé la sanction")
     @Column(name = "SANCTION_ENTITY_CARRIER")
     private String sanctionEntityCarrier;
+    @NotNull
     @Comment("Nature et détails de la sanction")
     @Column(name = "SANCTION_DETAILS")
     private String sanctionDetails;

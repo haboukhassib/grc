@@ -168,7 +168,7 @@ public class Reporting {
     @Comment("Commentaire Contrôle Conformité")
     @Column(name = "CTRL_CONF7_INT")
     @Lob
-    private String ctrlConf7Int;
+    private String ctrlConf7Txt;
     @Composition
     @OneToMany(mappedBy = "reporting")
     private List<AuditRecommendation> auditRecommendation;
@@ -228,12 +228,12 @@ public class Reporting {
         this.newProductActivity = newProductActivity;
     }
 
-    public String getCtrlConf7Int() {
-        return ctrlConf7Int;
+    public String getCtrlConf7Txt() {
+        return ctrlConf7Txt;
     }
 
-    public void setCtrlConf7Int(String ctrlConf7Int) {
-        this.ctrlConf7Int = ctrlConf7Int;
+    public void setCtrlConf7Txt(String ctrlConf7Int) {
+        this.ctrlConf7Txt = ctrlConf7Int;
     }
 
     public Integer getCtrlConf6Int() {

@@ -25,6 +25,7 @@ public class AuditRecommendation {
     @Column(name = "AUDIT_DATE", nullable = false)
     @NotNull
     private LocalDate auditDate;
+    @NotNull
     @Column(name = "AUDIT_THEME")
     private String auditTheme;
     @Column(name = "AUDIT_REPORT_DATE")

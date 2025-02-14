@@ -15,7 +15,7 @@
             <textField id="ctrlConf4IntField" property="ctrlConf4Int" label="msg://com.company.grc.entity/Reporting.ctrlConf4Int"/>
             <textField id="ctrlConf5IntField" property="ctrlConf5Int" label="msg://com.company.grc.entity/Reporting.ctrlConf5Int"/>
             <textField id="ctrlConf6IntField" property="ctrlConf6Int" label="msg://com.company.grc.entity/Reporting.ctrlConf6Int"/>
-            <textArea id="ctrlConf7IntField" colspan="3" width="100%" height="6em" property="ctrlConf7Int" label="msg://com.company.grc.entity/Reporting.ctrlConf7Int"/>
+            <textArea id="ctrlConf7IntField" colspan="3" width="100%" height="6em" property="ctrlConf7Txt" label="msg://com.company.grc.entity/Reporting.ctrlConf7Txt"/>
         </formLayout>
     </content>
 </fragment>
