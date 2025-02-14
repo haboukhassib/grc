@@ -51,7 +51,7 @@
                 </formLayout>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="Organization" alignSelf="STRETCH">
+                <details id="organizationDetail" summaryText="Organisation Effectif" alignSelf="STRETCH">
                     <fragment id="organizationFragment"
                               class="com.company.grc.view.organizationfragment.OrganizationFragment"/>
                 </details>
@@ -67,27 +67,27 @@
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="Filtrage" alignSelf="STRETCH">
+                <details id="filtrageDetails" summaryText="Filtrage" alignSelf="STRETCH">
                     <fragment id="filtrageFragment" class="com.company.grc.view.filtragefragment.FiltrageFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="CENTIF" alignSelf="STRETCH">
+                <details id="centifDetails" summaryText="CENTIF" alignSelf="STRETCH">
                     <fragment id="centifFragment" class="com.company.grc.view.centiffragment.CentifFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="FATCA" alignSelf="STRETCH">
+                <details id="fatcaDetails" summaryText="FATCA" alignSelf="STRETCH">
                     <fragment id="fatcaFragment" class="com.company.grc.view.fatcafragment.FatcaFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="PDP" alignSelf="STRETCH">
+                <details id="pdpDetails" summaryText="PDP" alignSelf="STRETCH">
                     <fragment id="pdpFragment" class="com.company.grc.view.pdpfragment.PdpFragment"/>
                 </details>
             </vbox>
             <vbox boxSizing="BORDER_BOX" classNames="contrast-panel">
-                <details summaryText="Contrôle Conformité" alignSelf="STRETCH">
+                <details id="ctrlconfDetails" summaryText="Contrôle Conformité" alignSelf="STRETCH">
                     <fragment id="ctrlconfFragment" class="com.company.grc.view.ctrlconffragment.CtrlconfFragment"/>
                 </details>
             </vbox>

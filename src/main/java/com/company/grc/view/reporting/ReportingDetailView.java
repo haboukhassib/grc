@@ -4,8 +4,14 @@ import com.company.grc.app.ViewUtil;
 import com.company.grc.entity.Reporting;
 import com.company.grc.entity.User;
 import com.company.grc.view.alertfragment.AlertFragment;
+import com.company.grc.view.centiffragment.CentifFragment;
+import com.company.grc.view.ctrlconffragment.CtrlconfFragment;
+import com.company.grc.view.fatcafragment.FatcaFragment;
+import com.company.grc.view.filtragefragment.FiltrageFragment;
 import com.company.grc.view.kycfragment.KycFragment;
 import com.company.grc.view.main.MainView;
+import com.company.grc.view.organizationfragment.OrganizationFragment;
+import com.company.grc.view.pdpfragment.PdpFragment;
 import com.vaadin.flow.component.details.Details;
 import com.vaadin.flow.router.Route;
 import io.jmix.core.security.CurrentAuthentication;
@@ -27,15 +33,43 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
 
     @ViewComponent
     private KycFragment kycFragment;
-
     @ViewComponent
     private Details kycDetails;
 
     @ViewComponent
     private AlertFragment alertFragment;
-
     @ViewComponent
     private Details alertDetails;
+
+    @ViewComponent
+    private OrganizationFragment organizationFragment;
+    @ViewComponent
+    private Details organizationDetail;
+
+    @ViewComponent
+    private FiltrageFragment filtrageFragment;
+    @ViewComponent
+    private Details filtrageDetails;
+
+    @ViewComponent
+    private CentifFragment centifFragment;
+    @ViewComponent
+    private Details centifDetails;
+
+    @ViewComponent
+    private FatcaFragment fatcaFragment;
+    @ViewComponent
+    private Details fatcaDetails;
+
+    @ViewComponent
+    private PdpFragment pdpFragment;
+    @ViewComponent
+    private Details pdpDetails;
+
+    @ViewComponent
+    private CtrlconfFragment ctrlconfFragment;
+    @ViewComponent
+    private Details ctrlconfDetails;
 
     @Autowired
     private CurrentAuthentication currentAuthentication;
@@ -48,48 +82,21 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
 
     @Subscribe
     public void onBeforeShow(final BeforeShowEvent event) {
-
+        // Load organization list with items related to the current user
         String currentUsername = currentAuthentication.getUser().getUsername();
-            organizationDl.setParameter("current_user", currentUsername);
-            organizationDl.load();
-        // Kyc details
-        viewUtil.setIcon(kycDetails, kycFragment.getKyc3IntField(), kycFragment.getKyc4IntField(), kycFragment.getKyc5IntField(), kycFragment.getKyc7IntField(), kycFragment.getKyc8IntField(), kycFragment.getKyc9IntField());
-        kycFragment.getKyc3IntField().addValueChangeListener(e -> updateState());
-        kycFragment.getKyc4IntField().addValueChangeListener(e -> updateState());
-        kycFragment.getKyc5IntField().addValueChangeListener(e -> updateState());
-        kycFragment.getKyc7IntField().addValueChangeListener(e -> updateState());
-        kycFragment.getKyc8IntField().addValueChangeListener(e -> updateState());
-        kycFragment.getKyc9IntField().addValueChangeListener(e -> updateState());
+        organizationDl.setParameter("current_user", currentUsername);
+        organizationDl.load();
 
-        // Alert details
-        viewUtil.setIcon(alertDetails, alertFragment.getalert3IntField(), alertFragment.getalert4IntField(), alertFragment.getalert5IntField(), alertFragment.getalert7IntField(), alertFragment.getalert8IntField(), alertFragment.getalert9IntField());
-        alertFragment.getalert3IntField().addValueChangeListener(e -> updateState());
-        alertFragment.getalert4IntField().addValueChangeListener(e -> updateState());
-        alertFragment.getalert5IntField().addValueChangeListener(e -> updateState());
-        alertFragment.getalert7IntField().addValueChangeListener(e -> updateState());
-        alertFragment.getalert8IntField().addValueChangeListener(e -> updateState());
-        alertFragment.getalert9IntField().addValueChangeListener(e -> updateState());
-    }
-
-    @Subscribe
-    public void onBeforeSave(final BeforeSaveEvent event) {
+        // Set details indicators for missing values
+        kycFragment.setDetailsIndicator(kycDetails);
+        alertFragment.setDetailsIndicator(alertDetails);
+        organizationFragment.setDetailsIndicator(organizationDetail);
+        filtrageFragment.setDetailsIndicator(filtrageDetails);
+        centifFragment.setDetailsIndicator(centifDetails);
+        fatcaFragment.setDetailsIndicator(fatcaDetails);
+        pdpFragment.setDetailsIndicator(pdpDetails);
+        ctrlconfFragment.setDetailsIndicator(ctrlconfDetails);
 
     }
-
-
-    public void updateState() {
-        // Kyc details
-        viewUtil.updateSum(kycFragment.getKyc2IntField(), kycFragment.getKyc3IntField(), kycFragment.getKyc4IntField(), kycFragment.getKyc5IntField());
-        viewUtil.updateSum(kycFragment.getKyc6IntField(), kycFragment.getKyc7IntField(), kycFragment.getKyc8IntField(), kycFragment.getKyc9IntField());
-        viewUtil.updateSum(kycFragment.getKyc1IntField(), kycFragment.getKyc2IntField(), kycFragment.getKyc6IntField());
-        viewUtil.setIcon(kycDetails, kycFragment.getKyc3IntField(), kycFragment.getKyc4IntField(), kycFragment.getKyc5IntField(), kycFragment.getKyc7IntField(), kycFragment.getKyc8IntField(), kycFragment.getKyc9IntField());
-        // Alert details
-        viewUtil.updateSum(alertFragment.getalert2IntField(), alertFragment.getalert3IntField(), alertFragment.getalert4IntField(), alertFragment.getalert5IntField());
-        viewUtil.updateSum(alertFragment.getalert6IntField(), alertFragment.getalert7IntField(), alertFragment.getalert8IntField(), alertFragment.getalert9IntField());
-        viewUtil.updateSum(alertFragment.getalert1IntField(), alertFragment.getalert2IntField(), alertFragment.getalert6IntField());
-        viewUtil.setIcon(alertDetails, alertFragment.getalert3IntField(), alertFragment.getalert4IntField(), alertFragment.getalert5IntField(), alertFragment.getalert7IntField(), alertFragment.getalert8IntField(), alertFragment.getalert9IntField());
-
-    }
-
 
 }

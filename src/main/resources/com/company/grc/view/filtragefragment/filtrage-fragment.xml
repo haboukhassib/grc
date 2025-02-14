@@ -13,10 +13,10 @@
             <textField id="filtrageClient1IntField" property="filtrageClient1Int" label="msg://com.company.grc.entity/Reporting.filtrageClient1Int"/>
             <textField id="filtrageClient2IntField" property="filtrageClient2Int" label="msg://com.company.grc.entity/Reporting.filtrageClient2Int"/>
             <textField id="filtrageClient3IntField" property="filtrageClient3Int" label="msg://com.company.grc.entity/Reporting.filtrageClient3Int"/>
-            <textField id="filtrageClient4TxtField" property="filtrageClient4Int" label="msg://com.company.grc.entity/Reporting.filtrageClient4Int"/>
+            <textField id="filtrageClient4IntField" property="filtrageClient4Int" label="msg://com.company.grc.entity/Reporting.filtrageClient4Int"/>
             <h4 text="Filtrage Transactions" colspan="2" css="margin-top:15px"/>
             <textField id="filtrageTran1IntField" property="filtrageTran1Int" label="msg://com.company.grc.entity/Reporting.filtrageTran1Int"/>
-            <textField id="filtrageTran1IntField" property="filtrageTran1Int" label="msg://com.company.grc.entity/Reporting.filtrageTran1Int"/>
+            <textField id="filtrageTran2IntField" property="filtrageTran2Int" label="msg://com.company.grc.entity/Reporting.filtrageTran2Int"/>
         </formLayout>
 
     </content>
