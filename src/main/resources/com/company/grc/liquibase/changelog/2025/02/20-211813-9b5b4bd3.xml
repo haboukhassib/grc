@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <dropView viewName="dashboard"/>
+    </changeSet>
+    <changeSet id="2" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT1_INT" remarks="Total Alertes Remontées (à enlever)"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="3" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT2_INT" remarks="Total Alertes Remontées"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="4" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT3_INT" remarks="Alertes Remontées Risque Elevé"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="5" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT4_INT" remarks="Alertes Remontées Risque Moyen"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="6" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT5_INT" remarks="Alertes Remontées Risque Faible"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="7" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT6_INT" remarks="Total Alertes Traitées"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="8" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT7_INT" remarks="Alertes Traitées Risque Elevé"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="9" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT8_INT" remarks="Alertes Traitées Risque Moyen"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="10" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ALERT9_INT" remarks="Alertes Traitées Risque Faible"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="11" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ORG1_INT" remarks="Effectif Conformité"
+                          tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="12" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ORG2_INT" remarks="Effectif LAB-FT" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="13" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="ORG3_INT" remarks="Effectif global entité"
+                          tableName="REPORTING"/>
+    </changeSet>
+</databaseChangeLog>

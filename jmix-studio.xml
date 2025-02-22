@@ -11,15 +11,6 @@
         <ModuleSettings>
           <option name="dataStoreOptionsV2">
             <map>
-              <entry key="hsql">
-                <value>
-                  <DataStoreSettingsV2>
-                    <option name="supportedTypes">
-                      <option value="hsql" />
-                    </option>
-                  </DataStoreSettingsV2>
-                </value>
-              </entry>
               <entry key="main">
                 <value>
                   <DataStoreSettingsV2>
@@ -35,6 +26,9 @@
         </ModuleSettings>
       </entry>
     </moduleSettings>
+  </component>
+  <component name="JmixLiquibaseChangesConfig">
+    <exclude-change idName="dashboard" tagName="dropView" />
   </component>
   <component name="JmixPluginProjectSettings">
     <option name="savedDbProperties">

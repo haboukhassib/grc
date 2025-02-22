@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <createTable tableName="AUDIT_RECOMMENDATION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_AUDIT_RECOMMENDATION"/>
+            </column>
+            <column name="AUDITOR_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AUDIT_DATE" type="DATE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="AUDIT_THEME" type="VARCHAR(255)"/>
+            <column name="AUDIT_REPORT_DATE" type="DATE"/>
+            <column name="AUDIT_SANCTION" remarks="Prononcé de sanctions" type="VARCHAR(255)"/>
+            <column name="TOTAL_NB_RECO" remarks="Nombre total de recommandations" type="VARCHAR(255)"/>
+            <column name="TOTAL_NB_RECO_CLOSED" remarks="Nombre de recommandations clôturées" type="VARCHAR(255)"/>
+            <column name="ADDITIONAL_COMMENT" type="CLOB"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="GRC">
+        <createTable tableName="INCIDENT_TOOL">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_INCIDENT_TOOL"/>
+            </column>
+            <column name="TOOL_NAME" type="VARCHAR(255)"/>
+            <column name="INCIDENT_DESC" remarks="Descritption de l'Incident" type="VARCHAR(255)"/>
+            <column name="INCIDENT_DATE" remarks="Date de l'Incident" type="DATE"/>
+            <column name="INCIDENT_STATUS" remarks="Status de l'Incident" type="VARCHAR(255)"/>
+            <column name="INCIDENT_COMMENT" type="CLOB"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="GRC">
+        <createTable tableName="NEW_PRODUCT_ACTIVITY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_NEW_PRODUCT_ACTIVITY"/>
+            </column>
+            <column name="PRODUCT_ACTIVITY_NAME" remarks="Libellé Produit-Activité" type="VARCHAR(255)"/>
+            <column name="PRODUCT_ACTIVITY_DESC" remarks="Description Produit-Activité" type="VARCHAR(255)"/>
+            <column name="VALIDATION_COMPLIANCE_SUBMITTED" remarks="Soumis à la validation Compliance" type="BOOLEAN"/>
+            <column name="VALIDATION_COMPLIANCE_DONE" remarks="Validation compliance effectuée" type="BOOLEAN"/>
+            <column name="NEW_PRODUCT_ACTIVITY_COMMENT" remarks="Commentaire nouveau produit-activité" type="CLOB"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="GRC">
+        <createTable tableName="ORGANIZATION">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_ORGANIZATION"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ORGANIZATION_TYPE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COUNTRY" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MAIN_USER_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="GRC">
+        <createTable tableName="REGULATORY_MONITORING">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REGULATORY_MONITORING"/>
+            </column>
+            <column name="LEGAL_TEXT_NAME" remarks="Intitulé du texte relatif aux sujets conformité"
+                    type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TEXT_SUBJECT" remarks="Objet du texte" type="VARCHAR(255)"/>
+            <column name="EFFECTIVE_DATE" remarks="Date d'effet" type="DATE"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="GRC">
+        <createTable tableName="REPORTING">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_REPORTING"/>
+            </column>
+            <column name="ORGANIZATION_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="YEAR_" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="QUARTER" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="USER_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ORG1_INT" type="INT"/>
+            <column name="ORG2_INT" type="INT"/>
+            <column name="ORG3_INT" type="INT"/>
+            <column name="ORG4_TXT" type="CLOB"/>
+            <column name="KYC1_INT" remarks="Total Headcount EER" type="INT"/>
+            <column name="KYC2_INT" remarks="Number of EER Natural Person" type="INT"/>
+            <column name="KYC3_INT" remarks="High Risk NP" type="INT"/>
+            <column name="KYC4_INT" remarks="Medium Risk NP" type="INT"/>
+            <column name="KYC5_INT" remarks="Low Risk NP" type="INT"/>
+            <column name="KYC6_INT" remarks="Nunber of EER Legal Entities" type="INT"/>
+            <column name="KYC7_INT" remarks="High Risk LE" type="INT"/>
+            <column name="KYC8_INT" remarks="Medium Risk LE" type="INT"/>
+            <column name="KYC9_INT" remarks="Low Risk LE" type="INT"/>
+            <column name="ALERT1_INT" remarks="Total Alerts Raised" type="INT"/>
+            <column name="ALERT2_INT" remarks="Total Alerts Natural Person" type="INT"/>
+            <column name="ALERT3_INT" remarks="High Risk NP" type="INT"/>
+            <column name="ALERT4_INT" remarks="Medium Risk NP" type="INT"/>
+            <column name="ALERT5_INT" remarks="Low Risk NP" type="INT"/>
+            <column name="ALERT6_INT" remarks="Total Alerts Legal Entities" type="INT"/>
+            <column name="ALERT7_INT" remarks="High Risk LE" type="INT"/>
+            <column name="ALERT8_INT" remarks="Medium Risk LE" type="INT"/>
+            <column name="ALERT9_INT" remarks="Low Risk LE" type="INT"/>
+            <column name="FILTRAGE_CLIENT1_INT" remarks="Nombre d'alertes Siron KYC traitées" type="INT"/>
+            <column name="FILTRAGE_CLIENT2_INT" remarks="Nombre d'alertes relatives aux listes de sanctions"
+                    type="INT"/>
+            <column name="FILTRAGE_CLIENT3_INT" remarks="Nombre d'alertes relatives aux PEP" type="INT"/>
+            <column name="FILTRAGE_CLIENT4_INT" remarks="Nombre d'alertes Siron KYC traitées" type="INT"/>
+            <column name="FILTRAGE_TRAN1_INT" remarks="Nombre d'alertes sanctions screening remontées" type="INT"/>
+            <column name="FILTRAGE_TRAN2_INT" remarks="Nombre d'alertes sanctions screening traitées" type="INT"/>
+            <column name="CENTIF1_INT" remarks="Nombre total des DOS" type="INT"/>
+            <column name="CENTIF2_INT" remarks="Nombre total demandes d’information CENTIF" type="INT"/>
+            <column name="CENTIF3_INT" remarks="Nombre de soupçons internes remontés" type="INT"/>
+            <column name="FATCA1_INT" remarks="Nouvelles EER assujettis à FATCA" type="INT"/>
+            <column name="FATCA2_INT" remarks="Stock de clients assujettis à FATCA" type="INT"/>
+            <column name="FATCA3_INT" remarks="Stock de clients récalcitrants" type="INT"/>
+            <column name="PDP1_INT" remarks="Nombre de traitements éligibles aux déclarations APDP" type="INT"/>
+            <column name="PDP2_INT" remarks="Nombre de traitements dossiers déposés à la APDP" type="INT"/>
+            <column name="PDP3_INT" remarks="Nombre d'autorisations reçues de la part de la APDP" type="INT"/>
+            <column name="CTRL_CONF1_INT" remarks="Nombre contrôles prévus période" type="INT"/>
+            <column name="CTRL_CONF2_INT" remarks="Nombre de contrôles réalisés période" type="INT"/>
+            <column name="CTRL_CONF3_INT" remarks="Nombre de dossiers contrôlés période" type="INT"/>
+            <column name="CTRL_CONF4_INT" remarks="Nombre de dossiers contrôlés conformes période" type="INT"/>
+            <column name="CTRL_CONF5_INT" remarks="Nombre total de recos émises" type="INT"/>
+            <column name="CTRL_CONF6_INT" remarks="Nombre de Recos Clôturées" type="INT"/>
+            <column name="CTRL_CONF7_INT" remarks="Commentaire Contrôle Conformité" type="CLOB"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="GRC">
+        <createTable tableName="SANCTION_PENALTY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_SANCTION_PENALTY"/>
+            </column>
+            <column name="SANCTION_PURPOSE" remarks="Object de la Sanction" type="VARCHAR(255)"/>
+            <column name="SANCTION_ENTITY_CARRIER" remarks="Entité ayant réalisé la sanction" type="VARCHAR(255)"/>
+            <column name="SANCTION_DETAILS" remarks="Nature et détails de la sanction" type="VARCHAR(255)"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="GRC">
+        <createTable tableName="TRAINING_AWARENESS">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_TRAINING_AWARENESS"/>
+            </column>
+            <column name="TRAINING_THEME" remarks="Thématique de la formation" type="VARCHAR(255)"/>
+            <column name="TRAINING_TARGET_POPULATION" remarks="Population cible de la formation" type="VARCHAR(255)"/>
+            <column name="TRAINING_DATE" type="DATE"/>
+            <column name="TRAINING_NBR_PARTICIPANTS" remarks="Nombre de participants à la formation"
+                    type="VARCHAR(255)"/>
+            <column name="TRAINING_COMMENT" remarks="Commentaire Formation" type="CLOB"/>
+            <column name="REPORTING_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="GRC">
+        <addColumn tableName="USER_">
+            <column name="ORGANIZATION_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="10" author="GRC">
+        <createIndex indexName="IDX_AUDIT_RECOMMENDATION_REPORTING" tableName="AUDIT_RECOMMENDATION">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="AUDIT_RECOMMENDATION"
+                                 constraintName="FK_AUDIT_RECOMMENDATION_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="11" author="GRC">
+        <createIndex indexName="IDX_INCIDENT_TOOL_REPORTING" tableName="INCIDENT_TOOL">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="INCIDENT_TOOL"
+                                 constraintName="FK_INCIDENT_TOOL_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="12" author="GRC">
+        <createIndex indexName="IDX_NEW_PRODUCT_ACTIVITY_REPORTING" tableName="NEW_PRODUCT_ACTIVITY">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="NEW_PRODUCT_ACTIVITY"
+                                 constraintName="FK_NEW_PRODUCT_ACTIVITY_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="13" author="GRC">
+        <createIndex indexName="IDX_ORGANIZATION_UNQ" tableName="ORGANIZATION" unique="true">
+            <column name="NAME"/>
+            <column name="MAIN_USER_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="14" author="GRC">
+        <createIndex indexName="IDX_REGULATORY_MONITORING_REPORTING" tableName="REGULATORY_MONITORING">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="REGULATORY_MONITORING"
+                                 constraintName="FK_REGULATORY_MONITORING_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="15" author="GRC">
+        <createIndex indexName="IDX_REPORTING_ORGANIZATION" tableName="REPORTING">
+            <column name="ORGANIZATION_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ORGANIZATION_ID" baseTableName="REPORTING"
+                                 constraintName="FK_REPORTING_ON_ORGANIZATION" referencedColumnNames="ID"
+                                 referencedTableName="ORGANIZATION"/>
+    </changeSet>
+    <changeSet id="16" author="GRC">
+        <createIndex indexName="IDX_REPORTING_USER" tableName="REPORTING">
+            <column name="USER_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="USER_ID" baseTableName="REPORTING"
+                                 constraintName="FK_REPORTING_ON_USER" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+    <changeSet id="17" author="GRC">
+        <createIndex indexName="IDX_SANCTION_PENALTY_REPORTING" tableName="SANCTION_PENALTY">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="SANCTION_PENALTY"
+                                 constraintName="FK_SANCTION_PENALTY_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="18" author="GRC">
+        <createIndex indexName="IDX_TRAINING_AWARENESS_REPORTING" tableName="TRAINING_AWARENESS">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="TRAINING_AWARENESS"
+                                 constraintName="FK_TRAINING_AWARENESS_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="19" author="GRC">
+        <createIndex indexName="IDX_USER__ORGANIZATION" tableName="USER_">
+            <column name="ORGANIZATION_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ORGANIZATION_ID" baseTableName="USER_"
+                                 constraintName="FK_USER__ON_ORGANIZATION" referencedColumnNames="ID"
+                                 referencedTableName="ORGANIZATION"/>
+    </changeSet>
+    <changeSet id="20" author="GRC">
+        <addForeignKeyConstraint baseColumnNames="MAIN_USER_ID" baseTableName="ORGANIZATION"
+                                 constraintName="FK_ORGANIZATION_ON_MAIN_USER" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+</databaseChangeLog>

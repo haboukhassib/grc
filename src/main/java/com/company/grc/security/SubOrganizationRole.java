@@ -25,7 +25,7 @@ public interface SubOrganizationRole {
     void regulatoryMonitoring();
 
     @EntityAttributePolicy(entityClass = Reporting.class, attributes = "user", action = EntityAttributePolicyAction.VIEW)
-    @EntityAttributePolicy(entityClass = Reporting.class, attributes = {"id", "year", "month", "org1Int", "org2Int", "org3Int", "org4Txt", "kyc1Int", "kyc2Int", "kyc3Int", "kyc4Int", "kyc5Int", "kyc6Int", "kyc7Int", "kyc8Int", "kyc9Int", "alert1Int", "alert2Int", "alert3Int", "alert4Int", "alert5Int", "alert6Int", "alert7Int", "alert8Int", "alert9Int", "filtrageClient1Int", "filtrageClient2Int", "filtrageClient3Int", "filtrageClient4Int", "filtrageTran1Int", "filtrageTran2Int", "regulatoryMonitoring", "auditRecommendation", "organization"}, action = EntityAttributePolicyAction.MODIFY)
+    @EntityAttributePolicy(entityClass = Reporting.class, attributes = {"id", "year", "quarter", "org1Int", "org2Int", "org3Int", "org4Txt", "kyc1Int", "kyc2Int", "kyc3Int", "kyc4Int", "kyc5Int", "kyc6Int", "kyc7Int", "kyc8Int", "kyc9Int", "alert1Int", "alert2Int", "alert3Int", "alert4Int", "alert5Int", "alert6Int", "alert7Int", "alert8Int", "alert9Int", "filtrageClient1Int", "filtrageClient2Int", "filtrageClient3Int", "filtrageClient4Int", "filtrageTran1Int", "filtrageTran2Int", "regulatoryMonitoring", "auditRecommendation", "organization"}, action = EntityAttributePolicyAction.MODIFY)
     @EntityPolicy(entityClass = Reporting.class, actions = EntityPolicyAction.ALL)
     void reporting();
 

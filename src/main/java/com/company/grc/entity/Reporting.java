@@ -13,7 +13,8 @@ import java.util.UUID;
 @JmixEntity
 @Table(name = "REPORTING", indexes = {
         @Index(name = "IDX_REPORTING_USER", columnList = "USER_ID"),
-        @Index(name = "IDX_REPORTING_ORGANIZATION", columnList = "ORGANIZATION_ID")
+        @Index(name = "IDX_REPORTING_ORGANIZATION", columnList = "ORGANIZATION_ID"),
+        @Index(name = "IDX_REPORTING_ORGANIZATION_YEAR_QUARTER", columnList = "ORGANIZATION_ID, YEAR_, QUARTER", unique = true)
 })
 @Entity
 public class Reporting {
@@ -28,19 +29,22 @@ public class Reporting {
     @Column(name = "YEAR_", nullable = false)
     @NotNull
     private Integer year;
-    @Column(name = "MONTH_", nullable = false)
     @NotNull
-    private Integer month;
+    @Column(name = "QUARTER", nullable = false)
+    private Integer quarter;
     @JoinColumn(name = "USER_ID", nullable = false)
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     private User user;
+    @Comment("Effectif Conformité")
     @PositiveOrZero
     @Column(name = "ORG1_INT")
     private Integer org1Int;
+    @Comment("Effectif LAB-FT")
     @PositiveOrZero
     @Column(name = "ORG2_INT")
     private Integer org2Int;
+    @Comment("Effectif global entité")
     @PositiveOrZero
     @Column(name = "ORG3_INT")
     private Integer org3Int;
@@ -75,31 +79,32 @@ public class Reporting {
     @Comment("Low Risk LE")
     @Column(name = "KYC9_INT")
     private Integer kyc9Int;
-    @Comment("Total Alerts Raised")
+
+    @Comment("Total Alertes Remontées (à enlever)")
     @Column(name = "ALERT1_INT")
     private Integer alert1Int;
-    @Comment("Total Alerts Natural Person")
+    @Comment("Total Alertes Remontées")
     @Column(name = "ALERT2_INT")
     private Integer alert2Int;
-    @Comment("High Risk NP")
+    @Comment("Alertes Remontées Risque Elevé")
     @Column(name = "ALERT3_INT")
     private Integer alert3Int;
-    @Comment("Medium Risk NP")
+    @Comment("Alertes Remontées Risque Moyen")
     @Column(name = "ALERT4_INT")
     private Integer alert4Int;
-    @Comment("Low Risk NP")
+    @Comment("Alertes Remontées Risque Faible")
     @Column(name = "ALERT5_INT")
     private Integer alert5Int;
-    @Comment("Total Alerts Legal Entities")
+    @Comment("Total Alertes Traitées")
     @Column(name = "ALERT6_INT")
     private Integer alert6Int;
-    @Comment("High Risk LE")
+    @Comment("Alertes Traitées Risque Elevé")
     @Column(name = "ALERT7_INT")
     private Integer alert7Int;
-    @Comment("Medium Risk LE")
+    @Comment("Alertes Traitées Risque Moyen")
     @Column(name = "ALERT8_INT")
     private Integer alert8Int;
-    @Comment("Low Risk LE")
+    @Comment("Alertes Traitées Risque Faible")
     @Column(name = "ALERT9_INT")
     private Integer alert9Int;
     @Comment("Nombre d'alertes Siron KYC traitées")
@@ -187,6 +192,14 @@ public class Reporting {
     @Composition
     @OneToMany(mappedBy = "reporting")
     private List<TrainingAwareness> trainingAwareness;
+
+    public Quarter getQuarter() {
+        return quarter == null ? null : Quarter.fromId(quarter);
+    }
+
+    public void setQuarter(Quarter quarter) {
+        this.quarter = quarter == null ? null : quarter.getId();
+    }
 
     public List<AuditRecommendation> getAuditRecommendation() {
         return auditRecommendation;
@@ -604,14 +617,6 @@ public class Reporting {
         this.user = user;
     }
 
-    public Month getMonth() {
-        return month == null ? null : Month.fromId(month);
-    }
-
-    public void setMonth(Month month) {
-        this.month = month == null ? null : month.getId();
-    }
-
     public Year getYear() {
         return year == null ? null : Year.fromId(year);
     }
@@ -629,10 +634,10 @@ public class Reporting {
     }
 
     @InstanceName
-    @DependsOnProperties({"year", "month"})
+    @DependsOnProperties({"year", "quarter"})
     public String getInstanceName(MetadataTools metadataTools) {
         return String.format("%s %s",
                 metadataTools.format(getYear()),
-                metadataTools.format(getMonth()));
+                metadataTools.format(getQuarter()));
     }
 }

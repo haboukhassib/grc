@@ -51,7 +51,7 @@
             <columns resizable="true">
                 <column property="organization"/>
                 <column property="year"/>
-                <column property="month"/>
+                <column property="quarter"/>
                 <column property="user.username"/>
             </columns>
         </dataGrid>

@@ -46,7 +46,7 @@
                     <entityComboBox id="organizationField" property="organization"
                                     dataContainer="reportingDc" itemsContainer="organizationDc"/>
                     <select id="yearField" property="year"/>
-                    <select id="monthField" property="month"/>
+                    <select id="quarterField" property="quarter"/>
                     <textField id="userField" property="user.username" readOnly="true"/>
                 </formLayout>
             </vbox>

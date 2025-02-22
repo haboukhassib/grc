@@ -35,16 +35,32 @@ public class AuditRecommendation {
     private String auditSanction;
     @Comment("Nombre total de recommandations")
     @Column(name = "TOTAL_NB_RECO")
-    private String totalNbReco;
+    private Integer totalNbReco;
     @Comment("Nombre de recommandations clôturées")
     @Column(name = "TOTAL_NB_RECO_CLOSED")
-    private String totalNbRecoClosed;
+    private Integer totalNbRecoClosed;
     @Column(name = "ADDITIONAL_COMMENT")
     @Lob
     private String additionalComment;
     @JoinColumn(name = "REPORTING_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Reporting reporting;
+
+    public void setTotalNbRecoClosed(Integer totalNbRecoClosed) {
+        this.totalNbRecoClosed = totalNbRecoClosed;
+    }
+
+    public Integer getTotalNbRecoClosed() {
+        return totalNbRecoClosed;
+    }
+
+    public void setTotalNbReco(Integer totalNbReco) {
+        this.totalNbReco = totalNbReco;
+    }
+
+    public Integer getTotalNbReco() {
+        return totalNbReco;
+    }
 
     public Reporting getReporting() {
         return reporting;
@@ -60,22 +76,6 @@ public class AuditRecommendation {
 
     public void setAdditionalComment(String additionalComment) {
         this.additionalComment = additionalComment;
-    }
-
-    public String getTotalNbRecoClosed() {
-        return totalNbRecoClosed;
-    }
-
-    public void setTotalNbRecoClosed(String totalNbRecoClosed) {
-        this.totalNbRecoClosed = totalNbRecoClosed;
-    }
-
-    public String getTotalNbReco() {
-        return totalNbReco;
-    }
-
-    public void setTotalNbReco(String totalNbReco) {
-        this.totalNbReco = totalNbReco;
     }
 
     public String getAuditSanction() {
