@@ -19,8 +19,8 @@
             <column name="AUDIT_THEME" type="VARCHAR(255)"/>
             <column name="AUDIT_REPORT_DATE" type="DATE"/>
             <column name="AUDIT_SANCTION" remarks="Prononcé de sanctions" type="VARCHAR(255)"/>
-            <column name="TOTAL_NB_RECO" remarks="Nombre total de recommandations" type="VARCHAR(255)"/>
-            <column name="TOTAL_NB_RECO_CLOSED" remarks="Nombre de recommandations clôturées" type="VARCHAR(255)"/>
+            <column name="TOTAL_NB_RECO" remarks="Nombre total de recommandations" type="INT"/>
+            <column name="TOTAL_NB_RECO_CLOSED" remarks="Nombre de recommandations clôturées" type="INT"/>
             <column name="ADDITIONAL_COMMENT" type="CLOB"/>
             <column name="REPORTING_ID" type="UUID"/>
         </createTable>
@@ -99,9 +99,9 @@
             <column name="USER_ID" type="UUID">
                 <constraints nullable="false"/>
             </column>
-            <column name="ORG1_INT" type="INT"/>
-            <column name="ORG2_INT" type="INT"/>
-            <column name="ORG3_INT" type="INT"/>
+            <column name="ORG1_INT" remarks="Effectif Conformité" type="INT"/>
+            <column name="ORG2_INT" remarks="Effectif LAB-FT" type="INT"/>
+            <column name="ORG3_INT" remarks="Effectif global entité" type="INT"/>
             <column name="ORG4_TXT" type="CLOB"/>
             <column name="KYC1_INT" remarks="Total Headcount EER" type="INT"/>
             <column name="KYC2_INT" remarks="Number of EER Natural Person" type="INT"/>
@@ -112,15 +112,15 @@
             <column name="KYC7_INT" remarks="High Risk LE" type="INT"/>
             <column name="KYC8_INT" remarks="Medium Risk LE" type="INT"/>
             <column name="KYC9_INT" remarks="Low Risk LE" type="INT"/>
-            <column name="ALERT1_INT" remarks="Total Alerts Raised" type="INT"/>
-            <column name="ALERT2_INT" remarks="Total Alerts Natural Person" type="INT"/>
-            <column name="ALERT3_INT" remarks="High Risk NP" type="INT"/>
-            <column name="ALERT4_INT" remarks="Medium Risk NP" type="INT"/>
-            <column name="ALERT5_INT" remarks="Low Risk NP" type="INT"/>
-            <column name="ALERT6_INT" remarks="Total Alerts Legal Entities" type="INT"/>
-            <column name="ALERT7_INT" remarks="High Risk LE" type="INT"/>
-            <column name="ALERT8_INT" remarks="Medium Risk LE" type="INT"/>
-            <column name="ALERT9_INT" remarks="Low Risk LE" type="INT"/>
+            <column name="ALERT1_INT" remarks="Total Alertes Remontées (à enlever)" type="INT"/>
+            <column name="ALERT2_INT" remarks="Total Alertes Remontées" type="INT"/>
+            <column name="ALERT3_INT" remarks="Alertes Remontées Risque Elevé" type="INT"/>
+            <column name="ALERT4_INT" remarks="Alertes Remontées Risque Moyen" type="INT"/>
+            <column name="ALERT5_INT" remarks="Alertes Remontées Risque Faible" type="INT"/>
+            <column name="ALERT6_INT" remarks="Total Alertes Traitées" type="INT"/>
+            <column name="ALERT7_INT" remarks="Alertes Traitées Risque Elevé" type="INT"/>
+            <column name="ALERT8_INT" remarks="Alertes Traitées Risque Moyen" type="INT"/>
+            <column name="ALERT9_INT" remarks="Alertes Traitées Risque Faible" type="INT"/>
             <column name="FILTRAGE_CLIENT1_INT" remarks="Nombre d'alertes Siron KYC traitées" type="INT"/>
             <column name="FILTRAGE_CLIENT2_INT" remarks="Nombre d'alertes relatives aux listes de sanctions"
                     type="INT"/>
@@ -228,6 +228,13 @@
                                  referencedTableName="ORGANIZATION"/>
     </changeSet>
     <changeSet id="16" author="GRC">
+        <createIndex indexName="IDX_REPORTING_ORGANIZATION_YEAR_QUARTER" tableName="REPORTING" unique="true">
+            <column name="ORGANIZATION_ID"/>
+            <column name="YEAR_"/>
+            <column name="QUARTER"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="17" author="GRC">
         <createIndex indexName="IDX_REPORTING_USER" tableName="REPORTING">
             <column name="USER_ID"/>
         </createIndex>
@@ -236,7 +243,7 @@
                                  constraintName="FK_REPORTING_ON_USER" referencedColumnNames="ID"
                                  referencedTableName="USER_"/>
     </changeSet>
-    <changeSet id="17" author="GRC">
+    <changeSet id="18" author="GRC">
         <createIndex indexName="IDX_SANCTION_PENALTY_REPORTING" tableName="SANCTION_PENALTY">
             <column name="REPORTING_ID"/>
         </createIndex>
@@ -245,7 +252,7 @@
                                  constraintName="FK_SANCTION_PENALTY_ON_REPORTING" referencedColumnNames="ID"
                                  referencedTableName="REPORTING"/>
     </changeSet>
-    <changeSet id="18" author="GRC">
+    <changeSet id="19" author="GRC">
         <createIndex indexName="IDX_TRAINING_AWARENESS_REPORTING" tableName="TRAINING_AWARENESS">
             <column name="REPORTING_ID"/>
         </createIndex>
@@ -254,7 +261,7 @@
                                  constraintName="FK_TRAINING_AWARENESS_ON_REPORTING" referencedColumnNames="ID"
                                  referencedTableName="REPORTING"/>
     </changeSet>
-    <changeSet id="19" author="GRC">
+    <changeSet id="20" author="GRC">
         <createIndex indexName="IDX_USER__ORGANIZATION" tableName="USER_">
             <column name="ORGANIZATION_ID"/>
         </createIndex>
@@ -263,7 +270,7 @@
                                  constraintName="FK_USER__ON_ORGANIZATION" referencedColumnNames="ID"
                                  referencedTableName="ORGANIZATION"/>
     </changeSet>
-    <changeSet id="20" author="GRC">
+    <changeSet id="21" author="GRC">
         <addForeignKeyConstraint baseColumnNames="MAIN_USER_ID" baseTableName="ORGANIZATION"
                                  constraintName="FK_ORGANIZATION_ON_MAIN_USER" referencedColumnNames="ID"
                                  referencedTableName="USER_"/>
