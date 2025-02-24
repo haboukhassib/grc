@@ -9,9 +9,9 @@
                 <responsiveStep minWidth="0" columns="1"/>
             </responsiveSteps>
             <div classNames="grid-alert">
-                <hbox>
-                    <textField id="alert1IntField" property="alert1Int" label="msg://com.company.grc.entity/Reporting.alert1Int" readOnly="true" classNames="read-only-field"/>
-                </hbox>
+<!--                <hbox>-->
+<!--                    <textField id="alert1IntField" property="alert1Int" label="msg://com.company.grc.entity/Reporting.alert1Int" readOnly="true" classNames="read-only-field"/>-->
+<!--                </hbox>-->
 
                 <formLayout>
                     <responsiveSteps>

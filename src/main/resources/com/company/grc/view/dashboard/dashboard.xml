@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view" xmlns:superset="http://jmix.io/schema/superset/ui"
+      title="msg://dashboard.title">
+    <layout>
+        <superset:dashboard id="dashboard" width="100%" height="100%"
+                            embeddedId="1b791fbc-1f59-4e56-b4f1-748d7209f58a"
+                            titleVisible="true"/>
+
+
+    </layout>
+</view>

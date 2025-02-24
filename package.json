@@ -4,6 +4,7 @@
   "type": "module",
   "dependencies": {
     "@polymer/polymer": "3.5.1",
+    "@superset-ui/embedded-sdk": "0.1.2",
     "@vaadin/bundles": "24.4.17",
     "@vaadin/common-frontend": "0.0.19",
     "@vaadin/polymer-legacy-adapter": "24.4.17",
@@ -62,11 +63,13 @@
     "@vaadin/vaadin-themable-mixin": "$@vaadin/vaadin-themable-mixin",
     "ace-builds": "$ace-builds",
     "@vaadin/vaadin-lumo-styles": "$@vaadin/vaadin-lumo-styles",
-    "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles"
+    "@vaadin/vaadin-material-styles": "$@vaadin/vaadin-material-styles",
+    "@superset-ui/embedded-sdk": "$@superset-ui/embedded-sdk"
   },
   "vaadin": {
     "dependencies": {
       "@polymer/polymer": "3.5.1",
+      "@superset-ui/embedded-sdk": "0.1.2",
       "@vaadin/bundles": "24.4.17",
       "@vaadin/common-frontend": "0.0.19",
       "@vaadin/polymer-legacy-adapter": "24.4.17",
@@ -106,6 +109,6 @@
       "workbox-core": "7.3.0",
       "workbox-precaching": "7.3.0"
     },
-    "hash": "4976c5a44189515614b62b563bca0b480db6f50253a35b72314b68b94024906c"
+    "hash": "3f34fb2b325a0b1d4037ced8e42b5ec9044a8e587ae7f84628a1ef4255fdccea"
   }
 }

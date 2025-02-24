@@ -39,6 +39,8 @@ dependencies {
     implementation 'io.jmix.charts:jmix-charts-flowui-starter'
     implementation 'io.jmix.audit:jmix-audit-starter'
     implementation 'io.jmix.audit:jmix-audit-flowui-starter'
+    implementation 'io.jmix.superset:jmix-superset-starter'
+    implementation 'io.jmix.superset:jmix-superset-flowui-starter'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

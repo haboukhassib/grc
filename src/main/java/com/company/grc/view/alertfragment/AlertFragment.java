@@ -53,7 +53,7 @@ public class AlertFragment extends Fragment<JmixFormLayout> {
     public void updateState(Details details) {
         viewUtil.updateSum(alert2IntField, alert3IntField, alert4IntField, alert5IntField);
         viewUtil.updateSum(alert6IntField, alert7IntField, alert8IntField, alert9IntField);
-        viewUtil.updateSum(alert1IntField, alert2IntField, alert6IntField);
+//        viewUtil.updateSum(alert1IntField, alert2IntField, alert6IntField);
         viewUtil.setIcon(details, alert3IntField, alert4IntField, alert5IntField, alert7IntField, alert8IntField, alert9IntField);
     }
 

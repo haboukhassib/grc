@@ -3,6 +3,7 @@
 
     <menu id="application" title="msg://com.company.grc/menu.application.title" opened="true">
         <item view="Reporting.list" title="Reporting"/>
+        <item view="Dashboard" title="msg://com.company.grc.view.dashboard/dashboard.title"/>
     </menu>
     <menu id="application-masterdata" title="Master Data" icon="ARCHIVE">
         <item view="Organization.list" title="msg://com.company.grc.view.organization/organizationListView.title"/>
