@@ -29,7 +29,15 @@ pipeline {
 stage('Stop Process on Port 8080') {
 			steps {
 				script {
-					// Use lsof to find the PID for the process running on port 8080
+					// Debugging: Check the current user
+            def currentUser = sh(script: "whoami", returnStdout: true).trim()
+            echo "Current User: ${currentUser}"
+
+            // Debugging: List groups for the current user
+            def userGroups = sh(script: "groups", returnStdout: true).trim()
+            echo "User Groups: ${userGroups}"
+
+            // Use lsof with sudo to find the PID for the process running on port 8080
             def processId = sh(script: "sudo lsof -t -i :${GRC_PORT} || true", returnStdout: true).trim()
             echo "Process ID: ${processId}" // Debug line
 
@@ -43,6 +51,7 @@ stage('Stop Process on Port 8080') {
         }
     }
 }
+
 
 
 
