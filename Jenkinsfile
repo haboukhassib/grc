@@ -26,19 +26,23 @@ pipeline {
             }
         }
 
-		stage('Stop Process on Port 8080') {
-					steps {
-						script {
-							def processId = sh(script: "netstat -tuln | grep ':${GRC_PORT}' | awk '{print \$7}' || true", returnStdout: true).trim()
-					if (processId) {
-								echo "Stopping process on port ${GRC_PORT} (PID: ${processId})"
-						sh "kill -9 ${processId}"
-					} else {
-								echo "No process found on port ${GRC_PORT}."
-					}
-				}
-			}
-		}
+stage('Stop Process on Port 8080') {
+			steps {
+				script {
+					// Check for the process running on the specified port
+            def processId = sh(script: "netstat -tuln | grep ':${GRC_PORT}' | awk '{print \$7}' || true", returnStdout: true).trim()
+            echo "Process ID: ${processId}" // Debug line
+            if (processId) {
+						echo "Stopping process on port ${GRC_PORT} (PID: ${processId})"
+                sh "kill -9 ${processId}"
+            } else {
+						echo "No process found on port ${GRC_PORT}."
+            }
+        }
+    }
+}
+
+
 
         stage('Pull GRC Code') {
 			steps {
