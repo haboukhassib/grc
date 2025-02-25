@@ -40,6 +40,17 @@ pipeline {
             }
         }
 
+        stage('Pull GRC Code') {
+			steps {
+				script {
+					dir(GRC_DIR) {
+						echo "Pulling latest code from the GRC repository..."
+                        sh "git pull origin master"
+                    }
+                }
+            }
+        }
+
         stage('Build GRC Project') {
 			steps {
 				script {
