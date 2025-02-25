@@ -3,7 +3,8 @@
       title="msg://dashboard.title">
     <layout>
         <superset:dashboard id="dashboard" width="100%" height="100%"
-                            embeddedId="1b791fbc-1f59-4e56-b4f1-748d7209f58a"
+                            embeddedId="7a315d45-1cbe-410c-a0a3-2e0b679caa80"
+
                             titleVisible="true"/>
 
 
