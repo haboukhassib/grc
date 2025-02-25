@@ -35,7 +35,7 @@ stage('Stop Process on Port 8080') {
 
             if (processId) {
 						echo "Stopping process on port ${GRC_PORT} (PID: ${processId})"
-                sh "kill -9 ${processId}"
+                sh "sudo kill -9 ${processId}"
                 echo "Process stopped."
             } else {
 						echo "No process found on port ${GRC_PORT}."
@@ -43,6 +43,7 @@ stage('Stop Process on Port 8080') {
         }
     }
 }
+
 
 
 
