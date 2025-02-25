@@ -2,22 +2,24 @@ pipeline {
 	agent any
 
     environment {
-		REPO_URL = 'https://github.com/haboukhassib/grc.git'
-        REPO_DIR = 'C:\\Users\\Administrator\\Desktop\\GRC'
-        PORT = '8080'
+		SUPERSET_DIR = "/home/ubuntu/superset"
+        GRC_DIR = "/home/ubuntu/grc"
+        DOCKER_COMPOSE_FILE = "docker-compose-non-dev.yml"
+        GRC_PORT = "8080"
+        SUPERSET_PORT = "8088"
     }
 
     stages {
-		stage('Checkout Repository') {
+		stage('Start Superset Container (if needed)') {
 			steps {
 				script {
-					if (!fileExists(env.REPO_DIR)) {
-						echo 'Cloning repository...'
-                        bat "git clone %REPO_URL% %REPO_DIR%"
+					def isRunning = sh(script: "docker ps --filter 'publish=${SUPERSET_PORT}' --format '{{.ID}}' || true", returnStdout: true).trim()
+                    if (isRunning) {
+						echo "Superset is already running on port ${SUPERSET_PORT}."
                     } else {
-						echo 'Repository exists. Pulling latest changes...'
-                        dir(env.REPO_DIR) {
-							bat 'git pull'
+						echo "Starting Superset container..."
+                        dir(SUPERSET_DIR) {
+							sh "docker-compose -f ${DOCKER_COMPOSE_FILE} up -d"
                         }
                     }
                 }
@@ -27,37 +29,38 @@ pipeline {
         stage('Stop Process on Port 8080') {
 			steps {
 				script {
-					def processId = bat(script: "netstat -ano | findstr :%PORT%", returnStdout: true).trim()
+					def processId = sh(script: "lsof -t -i:${GRC_PORT} || true", returnStdout: true).trim()
                     if (processId) {
-						def pid = processId.split()[-1]
-                        bat "taskkill /PID ${pid} /F"
-                        echo "Killed process using port ${PORT} (PID: ${pid})"
+						echo "Stopping process on port ${GRC_PORT} (PID: ${processId})"
+                        sh "kill -9 ${processId}"
                     } else {
-						echo "No process found on port ${PORT}"
+						echo "No process found on port ${GRC_PORT}."
                     }
                 }
             }
         }
 
-        stage('Build Project') {
+        stage('Build GRC Project') {
 			steps {
-				dir(env.REPO_DIR) {
-					bat './gradlew "-Pvaadin.productionMode=true" bootJar'
+				script {
+					dir(GRC_DIR) {
+						sh "./gradlew -Pvaadin.productionMode=true bootJar"
+                    }
                 }
             }
         }
 
-        stage('Run Application') {
+        stage('Run GRC Application') {
 			steps {
 				script {
-					def jarPath = "${env.REPO_DIR}\\build\\libs"
-                    def jarFile = bat(script: "dir /B /O:D ${jarPath}\\GRC-*.jar", returnStdout: true).trim().split("\n")[-1]
-
-                    if (jarFile) {
-						echo "Starting application: ${jarFile}"
-                        bat "java -jar \"${jarPath}\\${jarFile}\""
-                    } else {
-						echo "No JAR file found in build\\libs"
+					dir("${GRC_DIR}/build/libs") {
+						def jarFile = sh(script: "ls GRC-*.jar | head -n 1", returnStdout: true).trim()
+                        if (jarFile) {
+							echo "Running ${jarFile}..."
+                            sh "nohup java -jar ${jarFile} &"
+                        } else {
+							error "No JAR file found!"
+                        }
                     }
                 }
             }
