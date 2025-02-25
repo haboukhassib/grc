@@ -30,17 +30,20 @@ stage('Stop Process on Port 8080') {
 			steps {
 				script {
 					// Use lsof to find the PID for the process running on port 8080
-            def processId = sh(script: "lsof -t -i:${GRC_PORT} || true", returnStdout: true).trim()
+            def processId = sh(script: "sudo lsof -t -i :${GRC_PORT} || true", returnStdout: true).trim()
             echo "Process ID: ${processId}" // Debug line
+
             if (processId) {
 						echo "Stopping process on port ${GRC_PORT} (PID: ${processId})"
                 sh "kill -9 ${processId}"
+                echo "Process stopped."
             } else {
 						echo "No process found on port ${GRC_PORT}."
             }
         }
     }
 }
+
 
 
 
