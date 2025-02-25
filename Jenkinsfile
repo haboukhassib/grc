@@ -29,8 +29,8 @@ pipeline {
 stage('Stop Process on Port 8080') {
 			steps {
 				script {
-					// Check for the process running on the specified port
-            def processId = sh(script: "netstat -tuln | grep ':${GRC_PORT}' | awk '{print \$7}' || true", returnStdout: true).trim()
+					// Use lsof to find the PID for the process running on port 8080
+            def processId = sh(script: "lsof -t -i:${GRC_PORT} || true", returnStdout: true).trim()
             echo "Process ID: ${processId}" // Debug line
             if (processId) {
 						echo "Stopping process on port ${GRC_PORT} (PID: ${processId})"
@@ -41,6 +41,7 @@ stage('Stop Process on Port 8080') {
         }
     }
 }
+
 
 
 
