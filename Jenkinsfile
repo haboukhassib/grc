@@ -55,6 +55,8 @@ pipeline {
         stage('Build GRC Project') {
 			steps {
 				script {
+					// Ensure gradlew has execute permission
+					sh "chmod +x gradlew"
 					sh "./gradlew -Pvaadin.productionMode=true bootJar"
 				}
 			}
