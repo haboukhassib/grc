@@ -5,6 +5,7 @@ import com.company.grc.view.main.MainView;
 import com.vaadin.flow.component.PropertyDescriptor;
 import com.vaadin.flow.router.Route;
 import io.jmix.flowui.view.*;
+import io.jmix.superset.SupersetConfiguration;
 import io.jmix.supersetflowui.component.SupersetDashboard;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -21,10 +22,7 @@ public class Dashboard extends StandardView {
 
     @Subscribe
     public void onInit(final InitEvent event) {
-        System.out.println(embId);
-
         dashboard.setEmbeddedId(embId);
-
         System.out.println(dashboard.getEmbeddedId());
          }
 }
