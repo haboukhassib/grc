@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <addColumn tableName="USER_">
+            <column name="ORGANIZATION_ID" type="UUID"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="2" author="GRC">
+        <createIndex indexName="IDX_AUDIT_RECOMMENDATION_REPORTING" tableName="AUDIT_RECOMMENDATION">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="AUDIT_RECOMMENDATION"
+                                 constraintName="FK_AUDIT_RECOMMENDATION_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="3" author="GRC">
+        <createIndex indexName="IDX_INCIDENT_TOOL_REPORTING" tableName="INCIDENT_TOOL">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="INCIDENT_TOOL"
+                                 constraintName="FK_INCIDENT_TOOL_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="4" author="GRC">
+        <createIndex indexName="IDX_NEW_PRODUCT_ACTIVITY_REPORTING" tableName="NEW_PRODUCT_ACTIVITY">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="NEW_PRODUCT_ACTIVITY"
+                                 constraintName="FK_NEW_PRODUCT_ACTIVITY_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="5" author="GRC">
+        <createIndex indexName="IDX_ORGANIZATION_UNQ" tableName="ORGANIZATION" unique="true">
+            <column name="NAME"/>
+            <column name="MAIN_USER_ID"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="6" author="GRC">
+        <createIndex indexName="IDX_REGULATORY_MONITORING_REPORTING" tableName="REGULATORY_MONITORING">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="REGULATORY_MONITORING"
+                                 constraintName="FK_REGULATORY_MONITORING_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="7" author="GRC">
+        <createIndex indexName="IDX_REPORTING_ORGANIZATION" tableName="REPORTING">
+            <column name="ORGANIZATION_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ORGANIZATION_ID" baseTableName="REPORTING"
+                                 constraintName="FK_REPORTING_ON_ORGANIZATION" referencedColumnNames="ID"
+                                 referencedTableName="ORGANIZATION"/>
+    </changeSet>
+    <changeSet id="8" author="GRC">
+        <createIndex indexName="IDX_REPORTING_ORGANIZATION_YEAR_QUARTER" tableName="REPORTING" unique="true">
+            <column name="ORGANIZATION_ID"/>
+            <column name="YEAR_"/>
+            <column name="QUARTER"/>
+        </createIndex>
+    </changeSet>
+    <changeSet id="9" author="GRC">
+        <createIndex indexName="IDX_REPORTING_USER" tableName="REPORTING">
+            <column name="USER_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="USER_ID" baseTableName="REPORTING"
+                                 constraintName="FK_REPORTING_ON_USER" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+    <changeSet id="10" author="GRC">
+        <createIndex indexName="IDX_SANCTION_PENALTY_REPORTING" tableName="SANCTION_PENALTY">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="SANCTION_PENALTY"
+                                 constraintName="FK_SANCTION_PENALTY_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="11" author="GRC">
+        <createIndex indexName="IDX_TRAINING_AWARENESS_REPORTING" tableName="TRAINING_AWARENESS">
+            <column name="REPORTING_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REPORTING_ID" baseTableName="TRAINING_AWARENESS"
+                                 constraintName="FK_TRAINING_AWARENESS_ON_REPORTING" referencedColumnNames="ID"
+                                 referencedTableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="12" author="GRC">
+        <createIndex indexName="IDX_USER__ORGANIZATION" tableName="USER_">
+            <column name="ORGANIZATION_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="ORGANIZATION_ID" baseTableName="USER_"
+                                 constraintName="FK_USER__ON_ORGANIZATION" referencedColumnNames="ID"
+                                 referencedTableName="ORGANIZATION"/>
+    </changeSet>
+    <changeSet id="13" author="GRC">
+        <addForeignKeyConstraint baseColumnNames="MAIN_USER_ID" baseTableName="ORGANIZATION"
+                                 constraintName="FK_ORGANIZATION_ON_MAIN_USER" referencedColumnNames="ID"
+                                 referencedTableName="USER_"/>
+    </changeSet>
+</databaseChangeLog>

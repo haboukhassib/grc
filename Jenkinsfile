@@ -57,6 +57,7 @@ pipeline {
 				script {
 					// Ensure gradlew has execute permission
 					sh "chmod +x gradlew"
+					sh "./gradlew clean"
 					sh "sudo ./gradlew -Pvaadin.productionMode=true bootJar"
 				}
 			}
