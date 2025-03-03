@@ -2,6 +2,7 @@
 @import url('https://cdn.vaadin.com/vaadin-lumo-styles/1.6.0/lumo.css');
 
 html {
+    font-family: "Roboto Light";
     --secondary-base-color: #f4f6f7;
     background-color: var(--secondary-base-color);
     --lumo-primary-text-color: rgb(11, 68, 142);
