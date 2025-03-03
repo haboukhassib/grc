@@ -33,7 +33,23 @@ public interface OrganizationRole {
     @EntityPolicy(entityClass = User.class, actions = EntityPolicyAction.ALL)
     void user();
 
-    @ViewPolicy(viewIds = {"Organization.list", "User.list", "Organization.detail", "AlertFragment", "Audit_.detail", "Audit_.list", "FiltrageFragment", "kycFragment", "LoginView", "MainView", "OrganizationFragment", "RegulatoryMonitoring.detail", "Reporting.detail", "Reporting.list", "RegulatoryMonitoring.list", "User.detail"})
-    @MenuPolicy(menuIds = {"Reporting.list", "Organization.list", "User.list"})
+    @ViewPolicy(viewIds = {"Reporting.list", "Dashboard", "Organization.list", "User.list", "flowui_DateIntervalDialog", "flowui_PropertyFilterCondition.detail", "flowui_JpqlFilterCondition.detail", "flowui_AddConditionView", "flowui_GroupFilterCondition.detail", "headerPropertyFilterLayout", "inputDialog", "multiValueSelectDialog", "resetPasswordView", "changePasswordView", "MainView", "User.detail", "LoginView", "Organization.detail", "RegulatoryMonitoring.list", "RegulatoryMonitoring.detail", "Reporting.detail", "kycFragment", "AuditRecommendation.list", "AuditRecommendation.detail", "NewProductActivity.list", "NewProductActivity.detail", "SanctionPenalty.list", "SanctionPenalty.detail", "TrainingAwareness.list", "TrainingAwareness.detail", "IncidentTool.list", "IncidentTool.detail", "AlertFragment", "PdpFragment", "RegulatorymonitoringFragment", "NewproductactivityFragment", "SanctionpenaltyFragment", "AuditrecommendationFragment", "OrganizationFragment", "CtrlconfFragment", "IncidenttoolFragment", "FragmentRenderer", "FiltrageFragment", "CentifFragment", "TrainingawarenessFragment", "FatcaFragment"})
+    @MenuPolicy(menuIds = {"Reporting.list", "Dashboard", "Organization.list", "User.list"})
     void screens();
+
+    @EntityAttributePolicy(entityClass = IncidentTool.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
+    @EntityPolicy(entityClass = IncidentTool.class, actions = EntityPolicyAction.ALL)
+    void incidentTool();
+
+    @EntityAttributePolicy(entityClass = NewProductActivity.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
+    @EntityPolicy(entityClass = NewProductActivity.class, actions = EntityPolicyAction.ALL)
+    void newProductActivity();
+
+    @EntityAttributePolicy(entityClass = SanctionPenalty.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
+    @EntityPolicy(entityClass = SanctionPenalty.class, actions = EntityPolicyAction.ALL)
+    void sanctionPenalty();
+
+    @EntityAttributePolicy(entityClass = TrainingAwareness.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
+    @EntityPolicy(entityClass = TrainingAwareness.class, actions = EntityPolicyAction.ALL)
+    void trainingAwareness();
 }
