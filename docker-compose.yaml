@@ -1,0 +1,24 @@
+version: "3"
+services:
+  grc:
+    image: grc
+    user: root
+    depends_on:
+      - postgres
+    volumes:
+      - jmix:/workspace/.jmix
+    environment:
+      - MAIN_DATASOURCE_URL=jdbc:postgresql://postgres/GRC_APP_NEW
+    ports:
+      - "8080:8080"
+  postgres:
+    image: postgres:latest
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=user
+      - POSTGRES_DB=GRC_APP_NEW
+volumes:
+  jmix:
+  postgres:
