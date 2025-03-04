@@ -1,2 +1,2 @@
 [build]
-command = "sudo apt update && sudo apt install -y openjdk-17-jdk && export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64 && export PATH=$JAVA_HOME/bin:$PATH"
+command = "mkdir -p $HOME/.java && cd $HOME/.java && wget -O openjdk.tar.gz https://download.java.net/java/GA/jdk17/latest/binaries/openjdk-17_linux-x64_bin.tar.gz && tar -xzf openjdk.tar.gz && rm openjdk.tar.gz && export JAVA_HOME=$HOME/.java/jdk-17 && export PATH=$JAVA_HOME/bin:$PATH && java -version && bash gradlew -Pvaadin.productionMode=true bootJar"
