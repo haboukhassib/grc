@@ -8,8 +8,8 @@ command = """
   export JAVA_HOME=$HOME/.java/jdk-17.0.8+7 &&
   export PATH=$JAVA_HOME/bin:$PATH &&
   java -version &&
-  pwd &&
-  cd /grc &&
+  cd .. &&
+   pwd &&
   chmod +x gradlew &&
   ./gradlew -Pvaadin.productionMode=true bootJar
 """
