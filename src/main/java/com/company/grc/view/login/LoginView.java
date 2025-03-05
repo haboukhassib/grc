@@ -1,5 +1,6 @@
 package com.company.grc.view.login;
 
+import com.company.grc.view.dashboard.Dashboard;
 import com.vaadin.flow.component.UI;
 import com.vaadin.flow.component.login.AbstractLogin.LoginEvent;
 import com.vaadin.flow.component.login.LoginI18n;
@@ -10,10 +11,12 @@ import com.vaadin.flow.server.VaadinSession;
 import io.jmix.core.CoreProperties;
 import io.jmix.core.MessageTools;
 import io.jmix.core.security.AccessDeniedException;
+import io.jmix.flowui.ViewNavigators;
 import io.jmix.flowui.component.loginform.JmixLoginForm;
 import io.jmix.flowui.kit.component.ComponentUtils;
 import io.jmix.flowui.kit.component.loginform.JmixLoginI18n;
 import io.jmix.flowui.view.*;
+import io.jmix.flowui.view.navigation.ViewNavigator;
 import io.jmix.securityflowui.authentication.AuthDetails;
 import io.jmix.securityflowui.authentication.LoginViewSupport;
 import org.apache.commons.lang3.StringUtils;
@@ -51,6 +54,9 @@ public class LoginView extends StandardView implements LocaleChangeObserver {
 
     @ViewComponent
     private MessageBundle messageBundle;
+
+    @Autowired
+    private ViewNavigators  navigator;
 
     @Value("${ui.login.defaultUsername:}")
     private String defaultUsername;
@@ -92,6 +98,8 @@ public class LoginView extends StandardView implements LocaleChangeObserver {
                             .withLocale(login.getSelectedLocale())
                             .withRememberMe(login.isRememberMe())
             );
+            navigator.view(this, Dashboard.class).navigate();
+
         } catch (final BadCredentialsException | DisabledException | LockedException | AccessDeniedException e) {
             log.warn("Login failed for user '{}': {}", event.getUsername(), e.toString());
             event.getSource().setError(true);
