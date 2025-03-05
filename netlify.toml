@@ -11,7 +11,7 @@ command = """
   cd /opt/build/repo &&
 
   bash ./gradlew -Pvaadin.productionMode=true bootJar
-  cd /build/libs &&
+  cd /opt/build/repo/build/libs &&
   java -jar GRC-0.0.1.jar
 """
 
