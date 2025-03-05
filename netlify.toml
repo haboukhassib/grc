@@ -9,9 +9,7 @@ command = """
   export PATH=$JAVA_HOME/bin:$PATH &&
   java -version &&
   cd /opt/build/repo &&
-  pwd &&
-   ls &&
-#  chmod +x gradlew &&
-  ./gradlew -Pvaadin.productionMode=true bootJar
+  chmod +x gradlew &&
+  gradlew -Pvaadin.productionMode=true bootJar
 """
 
