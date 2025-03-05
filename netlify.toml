@@ -9,7 +9,6 @@ command = """
   export PATH=$JAVA_HOME/bin:$PATH &&
   java -version &&
   cd /opt/build/repo &&
-
   bash ./gradlew -Pvaadin.productionMode=true bootJar
   cd /opt/build/repo/build/libs &&
   java -jar GRC-0.0.1.jar
