@@ -46,6 +46,7 @@ public enum Country implements EnumClass<String> {
     COMOROS("KM"),
     CONGO_BRAZZAVILLE("CG"),
     CONGO_KINSHASA("CD"),
+    IVORY_COAST("CI"),
     COSTA_RICA("CR"),
     CROATIA("HR"),
     CUBA("CU"),
@@ -168,7 +169,30 @@ public enum Country implements EnumClass<String> {
     SWEDEN("SE"),
     SWITZERLAND("CH"),
     SYRIA("SY"),
-    TAIWAN("TW");
+    TAIWAN("TW"),
+    TANZANIA("TZ"),
+    THAILAND("TH"),
+    TOGO("TG"),
+    TONGA("TO"),
+    TRINIDAD_AND_TOBAGO("TT"),
+    TUNISIA("TN"),
+    TURKMENISTAN("TM"),
+    TURKEY("TR"),
+    TUVALU("TV"),
+    UGANDA("UG"),
+    UKRAINE("UA"),
+    UNITED_ARAB_EMIRATES("AE"),
+    UNITED_KINGDOM("GB"),
+    UNITED_STATES("US"),
+    URUGUAY("UY"),
+    UZBEKISTAN("UZ"),
+    VANUATU("VU"),
+    VENEZUELA("VE"),
+    VIETNAM("VN"),
+    YEMEN("YE"),
+    ZAMBIA("ZM"),
+    ZIMBABWE("ZW");
+
 
 
     private final String id;

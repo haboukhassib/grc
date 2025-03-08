@@ -8,8 +8,9 @@ import org.springframework.lang.Nullable;
 public enum OrganizationType implements EnumClass<String> {
 
     HEAD_OFFICE("A"),
-    REGIONAL_OFFICE("B"),
-    SUBSIDIARY("C");
+    BRANCH("B"),
+    SUBSIDIARY("C"),
+    REPRESENTATIVE_OFFICE("D");
 
     private final String id;
 
