@@ -23,5 +23,6 @@ public class Dashboard extends StandardView {
     @Subscribe
     public void onInit(final InitEvent event) {
         dashboard.setEmbeddedId(embId);
+        System.out.println(embId);
          }
 }
