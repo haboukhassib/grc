@@ -73,8 +73,4 @@
 
     </changeSet>
 
-<!--    <changeSet id="5" author="Hicham">-->
-<!--        <sqlFile path="../../../../../dashboard.sql" relativeToChangelogFile="true"/>-->
-<!--    </changeSet>-->
-
 </databaseChangeLog>

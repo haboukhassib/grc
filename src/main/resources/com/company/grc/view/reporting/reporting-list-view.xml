@@ -36,6 +36,8 @@
             <button id="createButton" action="reportingsDataGrid.create"/>
             <button id="editButton" action="reportingsDataGrid.edit"/>
             <button id="removeButton" action="reportingsDataGrid.remove"/>
+            <button id="excelExportButton" action="reportingsDataGrid.excelExportAction"/>
+            <button id="jsonExportButton" action="reportingsDataGrid.jsonExportAction"/>
             <simplePagination id="pagination" dataLoader="reportingsDl"/>
         </hbox>
         <dataGrid id="reportingsDataGrid"
@@ -47,12 +49,29 @@
                 <action id="create" type="list_create"/>
                 <action id="edit" type="list_edit"/>
                 <action id="remove" type="list_remove"/>
+                <action id="excelExportAction" type="grdexp_excelExport">
+                <properties>
+                    <property name="columnsToExport" value="ALL_COLUMNS"/>
+                </properties>
+                </action>
+                <action id="jsonExportAction" type="grdexp_jsonExport">
+                <properties>
+                    <property name="columnsToExport" value="ALL_COLUMNS"/>
+                </properties>
+                </action>
             </actions>
             <columns resizable="true">
                 <column property="organization"/>
                 <column property="year"/>
                 <column property="quarter"/>
                 <column property="user.username"/>
+                <column property="kyc1Int" visible="false"/>
+                <column property="kyc2Int" visible="false"/>
+                <column property="kyc3Int" visible="false"/>
+                <column property="kyc4Int" visible="false"/>
+                <column property="kyc5Int" visible="false"/>
+                <column property="kyc6Int" visible="false"/>
+                <column property="kyc7Int" visible="false"/>
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">
