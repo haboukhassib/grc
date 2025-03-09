@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="GRC">
+        <addColumn tableName="REPORTING">
+            <column name="KYC10_INT" remarks="Nb PPE Identifiés" type="INT"/>
+            <column name="KYC11_INT" remarks="Dossiers PPE Validés" type="INT"/>
+            <column name="KYC12_INT" remarks="EER Refusées Motif Compliance" type="INT"/>
+            <column name="KYC13_INT" remarks="Comptes Clôturés Motif Compliance" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="3" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC1_INT" remarks="Nombre Total EER" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="4" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC2_INT" remarks="Total EER PP" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="5" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC3_INT" remarks="Risque Elevé PP" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="6" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC4_INT" remarks="Risque Moyen PP" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="7" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC5_INT" remarks="Risque Faible PP" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="8" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC6_INT" remarks="Total EER PM" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="9" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC7_INT" remarks="Risque Elevé PM" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="10" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC8_INT" remarks="Risque Moyen PM" tableName="REPORTING"/>
+    </changeSet>
+    <changeSet id="11" author="GRC">
+        <setColumnRemarks columnDataType="int" columnName="KYC9_INT" remarks="Risque Faible PM" tableName="REPORTING"/>
+    </changeSet>
+</databaseChangeLog>

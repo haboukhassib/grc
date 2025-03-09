@@ -51,35 +51,47 @@ public class Reporting {
     @Column(name = "ORG4_TXT")
     @Lob
     private String org4Txt;
-    @Comment("Total Headcount EER")
+    @Comment("Nombre Total EER")
     @PositiveOrZero
     @Column(name = "KYC1_INT")
     private Integer kyc1Int;
-    @Comment("Number of EER Natural Person")
+    @Comment("Total EER PP")
     @Column(name = "KYC2_INT")
     private Integer kyc2Int;
-    @Comment("High Risk NP")
+    @Comment("Risque Elevé PP")
     @Column(name = "KYC3_INT")
     private Integer kyc3Int;
-    @Comment("Medium Risk NP")
+    @Comment("Risque Moyen PP")
     @Column(name = "KYC4_INT")
     private Integer kyc4Int;
-    @Comment("Low Risk NP")
+    @Comment("Risque Faible PP")
     @Column(name = "KYC5_INT")
     private Integer kyc5Int;
-    @Comment("Nunber of EER Legal Entities")
+    @Comment("Total EER PM")
     @Column(name = "KYC6_INT")
     private Integer kyc6Int;
-    @Comment("High Risk LE")
+    @Comment("Risque Elevé PM")
     @Column(name = "KYC7_INT")
     private Integer kyc7Int;
-    @Comment("Medium Risk LE")
+    @Comment("Risque Moyen PM")
     @Column(name = "KYC8_INT")
     private Integer kyc8Int;
-    @Comment("Low Risk LE")
+    @Comment("Risque Faible PM")
     @Column(name = "KYC9_INT")
     private Integer kyc9Int;
 
+    @Comment("Nb PPE Identifiés")
+    @Column(name = "KYC10_INT")
+    private Integer kyc10Int;
+    @Comment("Dossiers PPE Validés")
+    @Column(name = "KYC11_INT")
+    private Integer kyc11Int;
+    @Comment("EER Refusées Motif Compliance")
+    @Column(name = "KYC12_INT")
+    private Integer kyc12Int;
+    @Comment("Comptes Clôturés Motif Compliance")
+    @Column(name = "KYC13_INT")
+    private Integer kyc13Int;
     @Comment("Total Alertes Remontées (à enlever)")
     @Column(name = "ALERT1_INT")
     private Integer alert1Int;
@@ -192,6 +204,38 @@ public class Reporting {
     @Composition
     @OneToMany(mappedBy = "reporting")
     private List<TrainingAwareness> trainingAwareness;
+
+    public Integer getKyc13Int() {
+        return kyc13Int;
+    }
+
+    public void setKyc13Int(Integer kyc13Int) {
+        this.kyc13Int = kyc13Int;
+    }
+
+    public Integer getKyc12Int() {
+        return kyc12Int;
+    }
+
+    public void setKyc12Int(Integer kyc12Int) {
+        this.kyc12Int = kyc12Int;
+    }
+
+    public Integer getKyc11Int() {
+        return kyc11Int;
+    }
+
+    public void setKyc11Int(Integer kyc11Int) {
+        this.kyc11Int = kyc11Int;
+    }
+
+    public Integer getKyc10Int() {
+        return kyc10Int;
+    }
+
+    public void setKyc10Int(Integer kyc10Int) {
+        this.kyc10Int = kyc10Int;
+    }
 
     public Quarter getQuarter() {
         return quarter == null ? null : Quarter.fromId(quarter);

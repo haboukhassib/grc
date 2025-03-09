@@ -44,20 +44,36 @@ public class KycFragment extends Fragment<JmixFormLayout> {
     @ViewComponent
     private TypedTextField<Integer> kyc9IntField;
 
+    @ViewComponent
+    private TypedTextField<Integer> kyc10IntField;
+
+    @ViewComponent
+    private TypedTextField<Integer> kyc11IntField;
+
+    @ViewComponent
+    private TypedTextField<Integer> kyc12IntField;
+
+    @ViewComponent
+    private TypedTextField<Integer> kyc13IntField;
+
     public void setDetailsIndicator(Details details) {
-        viewUtil.setIcon(details, kyc3IntField, kyc4IntField, kyc5IntField, kyc7IntField, kyc8IntField, kyc9IntField);
+        viewUtil.setIcon(details, kyc3IntField, kyc4IntField, kyc5IntField, kyc7IntField, kyc8IntField, kyc9IntField, kyc10IntField, kyc11IntField, kyc12IntField, kyc13IntField);
         kyc3IntField.addValueChangeListener(e -> updateState(details));
         kyc4IntField.addValueChangeListener(e -> updateState(details));
         kyc5IntField.addValueChangeListener(e -> updateState(details));
         kyc7IntField.addValueChangeListener(e -> updateState(details));
         kyc8IntField.addValueChangeListener(e -> updateState(details));
         kyc9IntField.addValueChangeListener(e -> updateState(details));
+        kyc10IntField.addValueChangeListener(e -> updateState(details));
+        kyc11IntField.addValueChangeListener(e -> updateState(details));
+        kyc12IntField.addValueChangeListener(e -> updateState(details));
+        kyc13IntField.addValueChangeListener(e -> updateState(details));
     }
 
     public void updateState(Details details) {
         viewUtil.updateSum(kyc2IntField, kyc3IntField, kyc4IntField, kyc5IntField);
         viewUtil.updateSum(kyc6IntField, kyc7IntField, kyc8IntField, kyc9IntField);
         viewUtil.updateSum(kyc1IntField, kyc2IntField, kyc6IntField);
-        viewUtil.setIcon(details, kyc3IntField, kyc4IntField, kyc5IntField, kyc7IntField, kyc8IntField, kyc9IntField);
+        viewUtil.setIcon(details, kyc3IntField, kyc4IntField, kyc5IntField, kyc7IntField, kyc8IntField, kyc9IntField, kyc10IntField, kyc11IntField, kyc12IntField, kyc13IntField);
     }
 }

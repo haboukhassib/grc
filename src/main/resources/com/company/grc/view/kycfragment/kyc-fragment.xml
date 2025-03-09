@@ -33,6 +33,16 @@
                 <textField id="kyc9IntField" property="kyc9Int" label="msg://com.company.grc.entity/Reporting.kyc9Int"/>
                 <textField id="kyc6IntField" property="kyc6Int" label="msg://com.company.grc.entity/Reporting.kyc6Int" readOnly="true" classNames="read-only-field"/>
             </formLayout>
+            <formLayout>
+                <responsiveSteps>
+                    <responsiveStep minWidth="0" columns="1"/>
+                    <responsiveStep minWidth="40em" columns="4"/>
+                </responsiveSteps>
+                <textField id="kyc10IntField" property="kyc10Int" label="msg://com.company.grc.entity/Reporting.kyc10Int" />
+                <textField id="kyc11IntField" property="kyc11Int" label="msg://com.company.grc.entity/Reporting.kyc11Int"/>
+                <textField id="kyc12IntField" property="kyc12Int" label="msg://com.company.grc.entity/Reporting.kyc12Int"/>
+                <textField id="kyc13IntField" property="kyc13Int" label="msg://com.company.grc.entity/Reporting.kyc13Int"/>
+            </formLayout>
             </div>
         </formLayout>
     </content>
