@@ -15,23 +15,66 @@
                 </query>
             </loader>
         </collection>
+        <collection id="organizationDc" class="com.company.grc.entity.Organization">
+            <fetchPlan extends="_base"/>
+            <loader id="organizationDl">
+                <query>
+                    <![CDATA[select e from Organization e]]>
+                </query>
+            </loader>
+        </collection>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
         <urlQueryParameters>
-            <genericFilter component="genericFilter"/>
+<!--            <genericFilter component="genericFilter"/>-->
+            <propertyFilter component="organizationFilter"/>
+            <propertyFilter component="yearFilter"/>
+            <propertyFilter component="quarterFilter"/>
             <pagination component="pagination"/>
         </urlQueryParameters>
     </facets>
     <actions>
         <action id="selectAction" type="lookup_select"/>
         <action id="discardAction" type="lookup_discard"/>
+        <action id="clearFilterAction" text="Clear" icon="ERASER"/>
     </actions>
     <layout>
-        <genericFilter id="genericFilter"
-                       dataLoader="reportingsDl">
-            <properties include=".*"/>
-        </genericFilter>
+        <hbox width="100%" alignItems="BASELINE" classNames="buttons-panel">
+            <propertyFilter id="organizationFilter"
+                    property="organization"
+                    operation="EQUAL"
+                    dataLoader="reportingsDl"
+                    labelPosition="TOP"
+                    label="Organization">
+                <entityComboBox metaClass="Organization" itemsContainer="organizationDc"/>
+            </propertyFilter>
+            <propertyFilter
+                    id="yearFilter"
+                    property="year"
+                    operation="EQUAL"
+                    dataLoader="reportingsDl"
+                    labelPosition="TOP"
+                    label="Year"
+                    >
+                <entityComboBox property="year" dataContainer="reportingsDc"/>
+            </propertyFilter>
+
+            <propertyFilter
+                    id="quarterFilter"
+                    property="quarter"
+                    operation="EQUAL"
+                    dataLoader="reportingsDl"
+                    labelPosition="TOP"
+                    label="Quarter">
+                <entityComboBox  property="quarter" dataContainer="reportingsDc" required="false"/>
+            </propertyFilter>
+            <button id="clearFilterBtn" action="clearFilterAction" />
+        </hbox>
+<!--        <genericFilter id="genericFilter"-->
+<!--                       dataLoader="reportingsDl">-->
+<!--            <properties include=".*"/>-->
+<!--        </genericFilter>-->
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="createButton" action="reportingsDataGrid.create"/>
             <button id="editButton" action="reportingsDataGrid.edit"/>
