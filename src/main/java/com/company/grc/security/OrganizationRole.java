@@ -17,10 +17,6 @@ public interface OrganizationRole {
     @EntityPolicy(entityClass = AuditRecommendation.class, actions = EntityPolicyAction.ALL)
     void auditRecommendation();
 
-    @EntityAttributePolicy(entityClass = Organization.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
-    @EntityPolicy(entityClass = Organization.class, actions = EntityPolicyAction.ALL)
-    void organization();
-
     @EntityAttributePolicy(entityClass = RegulatoryMonitoring.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
     @EntityPolicy(entityClass = RegulatoryMonitoring.class, actions = EntityPolicyAction.ALL)
     void regulatoryMonitoring();
@@ -29,8 +25,8 @@ public interface OrganizationRole {
     @EntityPolicy(entityClass = Reporting.class, actions = EntityPolicyAction.ALL)
     void reporting();
 
-    @EntityAttributePolicy(entityClass = User.class, attributes = {"username", "password", "firstName", "lastName", "email", "active", "timeZoneId", "id", "version", "*"}, action = EntityAttributePolicyAction.MODIFY)
-    @EntityPolicy(entityClass = User.class, actions = EntityPolicyAction.ALL)
+    @EntityPolicy(entityClass = User.class, actions = EntityPolicyAction.READ)
+    @EntityAttributePolicy(entityClass = User.class, attributes = {"username", "password", "firstName", "lastName", "email", "active", "timeZoneId", "id", "version"}, action = EntityAttributePolicyAction.MODIFY)
     void user();
 
     @ViewPolicy(viewIds = {"Reporting.list", "Dashboard", "Organization.list", "User.list", "flowui_DateIntervalDialog", "flowui_PropertyFilterCondition.detail", "flowui_JpqlFilterCondition.detail", "flowui_AddConditionView", "flowui_GroupFilterCondition.detail", "headerPropertyFilterLayout", "inputDialog", "multiValueSelectDialog", "resetPasswordView", "changePasswordView", "MainView", "User.detail", "LoginView", "Organization.detail", "RegulatoryMonitoring.list", "RegulatoryMonitoring.detail", "Reporting.detail", "kycFragment", "AuditRecommendation.list", "AuditRecommendation.detail", "NewProductActivity.list", "NewProductActivity.detail", "SanctionPenalty.list", "SanctionPenalty.detail", "TrainingAwareness.list", "TrainingAwareness.detail", "IncidentTool.list", "IncidentTool.detail", "AlertFragment", "PdpFragment", "RegulatorymonitoringFragment", "NewproductactivityFragment", "SanctionpenaltyFragment", "AuditrecommendationFragment", "OrganizationFragment", "CtrlconfFragment", "IncidenttoolFragment", "FragmentRenderer", "FiltrageFragment", "CentifFragment", "TrainingawarenessFragment", "FatcaFragment"})
@@ -52,4 +48,8 @@ public interface OrganizationRole {
     @EntityAttributePolicy(entityClass = TrainingAwareness.class, attributes = "*", action = EntityAttributePolicyAction.MODIFY)
     @EntityPolicy(entityClass = TrainingAwareness.class, actions = EntityPolicyAction.ALL)
     void trainingAwareness();
+
+    @EntityAttributePolicy(entityClass = Organization.class, attributes = "*", action = EntityAttributePolicyAction.VIEW)
+    @EntityPolicy(entityClass = Organization.class, actions = EntityPolicyAction.READ)
+    void organization();
 }
