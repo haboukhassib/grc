@@ -5,6 +5,7 @@ import com.company.grc.view.main.MainView;
 import com.vaadin.flow.router.Route;
 import io.jmix.flowui.component.propertyfilter.PropertyFilter;
 import io.jmix.flowui.kit.action.ActionPerformedEvent;
+import io.jmix.flowui.model.CollectionLoader;
 import io.jmix.flowui.view.*;
 
 
@@ -21,12 +22,15 @@ public class ReportingListView extends StandardListView<Reporting> {
     private PropertyFilter yearFilter;
     @ViewComponent
     private PropertyFilter quarterFilter;
+    @ViewComponent
+    private CollectionLoader<Reporting> reportingsDl;
 
     @Subscribe("clearFilterAction")
     public void onClearFilterAction(final ActionPerformedEvent event) {
         organizationFilter.clear();
-        yearFilter.clear();
-        quarterFilter.clear();
+//        yearFilter.clear();
+//        quarterFilter.clear();
+        reportingsDl.load();
     }
 
 }

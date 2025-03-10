@@ -29,8 +29,8 @@
         <urlQueryParameters>
 <!--            <genericFilter component="genericFilter"/>-->
             <propertyFilter component="organizationFilter"/>
-            <propertyFilter component="yearFilter"/>
-            <propertyFilter component="quarterFilter"/>
+<!--            <propertyFilter component="yearFilter"/>-->
+<!--            <propertyFilter component="quarterFilter"/>-->
             <pagination component="pagination"/>
         </urlQueryParameters>
     </facets>
@@ -49,26 +49,26 @@
                     label="Organization">
                 <entityComboBox metaClass="Organization" itemsContainer="organizationDc"/>
             </propertyFilter>
-            <propertyFilter
-                    id="yearFilter"
-                    property="year"
-                    operation="EQUAL"
-                    dataLoader="reportingsDl"
-                    labelPosition="TOP"
-                    label="Year"
-                    >
-                <entityComboBox property="year" dataContainer="reportingsDc"/>
-            </propertyFilter>
+<!--            <propertyFilter-->
+<!--                    id="yearFilter"-->
+<!--                    property="year"-->
+<!--                    operation="EQUAL"-->
+<!--                    dataLoader="reportingsDl"-->
+<!--                    labelPosition="TOP"-->
+<!--                    label="Year"-->
+<!--                    >-->
+<!--                <entityComboBox property="year" dataContainer="reportingsDc"/>-->
+<!--            </propertyFilter>-->
 
-            <propertyFilter
-                    id="quarterFilter"
-                    property="quarter"
-                    operation="EQUAL"
-                    dataLoader="reportingsDl"
-                    labelPosition="TOP"
-                    label="Quarter">
-                <entityComboBox  property="quarter" dataContainer="reportingsDc" required="false"/>
-            </propertyFilter>
+<!--            <propertyFilter-->
+<!--                    id="quarterFilter"-->
+<!--                    property="quarter"-->
+<!--                    operation="EQUAL"-->
+<!--                    dataLoader="reportingsDl"-->
+<!--                    labelPosition="TOP"-->
+<!--                    label="Quarter">-->
+<!--                <entityComboBox  property="quarter" dataContainer="reportingsDc" required="false"/>-->
+<!--            </propertyFilter>-->
             <button id="clearFilterBtn" action="clearFilterAction" />
         </hbox>
 <!--        <genericFilter id="genericFilter"-->
@@ -105,8 +105,8 @@
             </actions>
             <columns resizable="true">
                 <column property="organization"/>
-                <column property="year"/>
-                <column property="quarter"/>
+                <column property="year" filterable="true"/>
+                <column property="quarter" filterable="true"/>
                 <column property="user.username"/>
                 <column property="kyc1Int" visible="false"/>
                 <column property="kyc2Int" visible="false"/>
