@@ -33,6 +33,12 @@
             <textField id="totalNbRecoField" property="totalNbReco"/>
             <textField id="totalNbRecoClosedField" property="totalNbRecoClosed"/>
             <textArea id="additionalCommentField" colspan="4" height="6em" width="100%" property="additionalComment"/>
+            <fileStorageUploadField id="attachmentField"
+                                    property="attachment"
+                                    clearButtonVisible="true"
+                                    fileNameVisible="true"
+                                    uploadIcon="vaadin:upload"
+                                    maxFileSize="10000000"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

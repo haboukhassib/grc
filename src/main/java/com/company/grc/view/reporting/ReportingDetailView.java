@@ -4,6 +4,7 @@ import com.company.grc.app.ViewUtil;
 import com.company.grc.entity.Reporting;
 import com.company.grc.entity.User;
 import com.company.grc.view.alertfragment.AlertFragment;
+import com.company.grc.view.auditrecommendationfragment.AuditrecommendationFragment;
 import com.company.grc.view.centiffragment.CentifFragment;
 import com.company.grc.view.ctrlconffragment.CtrlconfFragment;
 import com.company.grc.view.fatcafragment.FatcaFragment;
@@ -12,9 +13,14 @@ import com.company.grc.view.kycfragment.KycFragment;
 import com.company.grc.view.main.MainView;
 import com.company.grc.view.organizationfragment.OrganizationFragment;
 import com.company.grc.view.pdpfragment.PdpFragment;
+import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.details.Details;
+import com.vaadin.flow.component.icon.Icon;
+import com.vaadin.flow.component.icon.VaadinIcon;
 import com.vaadin.flow.router.Route;
 import io.jmix.core.security.CurrentAuthentication;
+import io.jmix.flowui.UiComponents;
+import io.jmix.flowui.download.Downloader;
 import io.jmix.flowui.model.DataLoader;
 import io.jmix.flowui.view.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +79,13 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
 
     @Autowired
     private CurrentAuthentication currentAuthentication;
+    @ViewComponent
+    private AuditrecommendationFragment auditrecommendationFragment;
+
+    @Autowired
+    private UiComponents uiComponents;
+    @Autowired
+    private Downloader downloader;
 
     @Subscribe
     public void onInitEntity(final InitEntityEvent<Reporting> event) {
@@ -96,7 +109,24 @@ public class ReportingDetailView extends StandardDetailView<Reporting> {
         fatcaFragment.setDetailsIndicator(fatcaDetails);
         pdpFragment.setDetailsIndicator(pdpDetails);
         ctrlconfFragment.setDetailsIndicator(ctrlconfDetails);
+    }
 
+    @Subscribe
+    public void onInit(final InitEvent event) {
+        auditrecommendationFragment.getAuditRecommendationsDataGrid().addComponentColumn(attachment -> {
+            Button downloadButton = uiComponents.create(Button.class);
+            downloadButton.setIcon(new Icon(VaadinIcon.DOWNLOAD));
+
+            if (attachment.getAttachment() == null) {
+                downloadButton.setEnabled(false);
+            }
+
+            downloadButton.addClickListener(e -> {
+                downloader.download(attachment.getAttachment());
+            });
+
+            return downloadButton;
+        });;
     }
 
 }

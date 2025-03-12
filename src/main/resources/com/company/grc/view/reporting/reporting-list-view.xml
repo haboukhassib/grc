@@ -27,10 +27,7 @@
     <facets>
         <dataLoadCoordinator auto="true"/>
         <urlQueryParameters>
-<!--            <genericFilter component="genericFilter"/>-->
             <propertyFilter component="organizationFilter"/>
-<!--            <propertyFilter component="yearFilter"/>-->
-<!--            <propertyFilter component="quarterFilter"/>-->
             <pagination component="pagination"/>
         </urlQueryParameters>
     </facets>
@@ -49,32 +46,8 @@
                     label="Organization">
                 <entityComboBox metaClass="Organization" itemsContainer="organizationDc"/>
             </propertyFilter>
-<!--            <propertyFilter-->
-<!--                    id="yearFilter"-->
-<!--                    property="year"-->
-<!--                    operation="EQUAL"-->
-<!--                    dataLoader="reportingsDl"-->
-<!--                    labelPosition="TOP"-->
-<!--                    label="Year"-->
-<!--                    >-->
-<!--                <entityComboBox property="year" dataContainer="reportingsDc"/>-->
-<!--            </propertyFilter>-->
-
-<!--            <propertyFilter-->
-<!--                    id="quarterFilter"-->
-<!--                    property="quarter"-->
-<!--                    operation="EQUAL"-->
-<!--                    dataLoader="reportingsDl"-->
-<!--                    labelPosition="TOP"-->
-<!--                    label="Quarter">-->
-<!--                <entityComboBox  property="quarter" dataContainer="reportingsDc" required="false"/>-->
-<!--            </propertyFilter>-->
             <button id="clearFilterBtn" action="clearFilterAction" />
         </hbox>
-<!--        <genericFilter id="genericFilter"-->
-<!--                       dataLoader="reportingsDl">-->
-<!--            <properties include=".*"/>-->
-<!--        </genericFilter>-->
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <button id="createButton" action="reportingsDataGrid.create"/>
             <button id="editButton" action="reportingsDataGrid.edit"/>
@@ -108,6 +81,9 @@
                 <column property="year" filterable="true"/>
                 <column property="quarter" filterable="true"/>
                 <column property="user.username"/>
+                <column property="org1Int" visible="false"/>
+                <column property="org2Int" visible="false"/>
+                <column property="org3Int" visible="false"/>
                 <column property="kyc1Int" visible="false"/>
                 <column property="kyc2Int" visible="false"/>
                 <column property="kyc3Int" visible="false"/>
@@ -115,6 +91,43 @@
                 <column property="kyc5Int" visible="false"/>
                 <column property="kyc6Int" visible="false"/>
                 <column property="kyc7Int" visible="false"/>
+                <column property="kyc8Int" visible="false"/>
+                <column property="kyc9Int" visible="false"/>
+                <column property="kyc10Int" visible="false"/>
+                <column property="kyc11Int" visible="false"/>
+                <column property="kyc12Int" visible="false"/>
+                <column property="kyc13Int" visible="false"/>
+                <column property="alert1Int" visible="false"/>
+                <column property="alert2Int" visible="false"/>
+                <column property="alert3Int" visible="false"/>
+                <column property="alert4Int" visible="false"/>
+                <column property="alert5Int" visible="false"/>
+                <column property="alert6Int" visible="false"/>
+                <column property="alert7Int" visible="false"/>
+                <column property="alert8Int" visible="false"/>
+                <column property="alert9Int" visible="false"/>
+                <column property="filtrageClient1Int" visible="false"/>
+                <column property="filtrageClient2Int" visible="false"/>
+                <column property="filtrageClient3Int" visible="false"/>
+                <column property="filtrageClient4Int" visible="false"/>
+                <column property="filtrageTran1Int" visible="false"/>
+                <column property="filtrageTran2Int" visible="false"/>
+                <column property="centif1Int" visible="false"/>
+                <column property="centif2Int" visible="false"/>
+                <column property="centif3Int" visible="false"/>
+                <column property="fatca1Int" visible="false"/>
+                <column property="fatca2Int" visible="false"/>
+                <column property="fatca3Int" visible="false"/>
+                <column property="pdp1Int" visible="false"/>
+                <column property="pdp2Int" visible="false"/>
+                <column property="pdp3Int" visible="false"/>
+                <column property="ctrlConf1Int" visible="false"/>
+                <column property="ctrlConf2Int" visible="false"/>
+                <column property="ctrlConf3Int" visible="false"/>
+                <column property="ctrlConf4Int" visible="false"/>
+                <column property="ctrlConf5Int" visible="false"/>
+                <column property="ctrlConf6Int" visible="false"/>
+
             </columns>
         </dataGrid>
         <hbox id="lookupActions" visible="false">

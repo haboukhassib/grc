@@ -32,8 +32,6 @@
                     <column property="auditSanction"/>
                     <column property="totalNbReco"/>
                     <column property="totalNbRecoClosed"/>
-                    <column property="additionalComment"/>
-
                 </columns>
             </dataGrid>
         </vbox>
