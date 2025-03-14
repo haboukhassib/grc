@@ -30,6 +30,12 @@
             <datePicker id="incidentDateField" property="incidentDate"/>
             <textField id="incidentStatusField" property="incidentStatus"/>
             <textArea id="incidentCommentField" colspan="4" width="100%" height="6em" property="incidentComment"/>
+            <fileStorageUploadField id="attachmentField"
+                                    property="attachment"
+                                    clearButtonVisible="true"
+                                    fileNameVisible="true"
+                                    uploadIcon="vaadin:upload"
+                                    maxFileSize="10000000"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

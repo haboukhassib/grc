@@ -1,5 +1,6 @@
 package com.company.grc.entity;
 
+import io.jmix.core.FileRef;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.Comment;
 import io.jmix.core.metamodel.annotation.JmixEntity;
@@ -29,9 +30,22 @@ public class RegulatoryMonitoring {
     @Comment("Date d'effet")
     @Column(name = "EFFECTIVE_DATE")
     private LocalDate effectiveDate;
+
+    @Comment("Pièce Jointe")
+    @Column(name = "ATTACHMENT", length = 1024)
+    private FileRef attachment;
+
     @JoinColumn(name = "REPORTING_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Reporting reporting;
+
+    public void setAttachment(FileRef attachment) {
+        this.attachment = attachment;
+    }
+
+    public FileRef getAttachment() {
+        return attachment;
+    }
 
     public Reporting getReporting() {
         return reporting;

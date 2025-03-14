@@ -28,6 +28,12 @@
             <textField id="sanctionPurposeField" property="sanctionPurpose"/>
             <textField id="sanctionEntityCarrierField" property="sanctionEntityCarrier"/>
             <textField id="sanctionDetailsField" property="sanctionDetails"/>
+            <fileStorageUploadField id="attachmentField"
+                                    property="attachment"
+                                    clearButtonVisible="true"
+                                    fileNameVisible="true"
+                                    uploadIcon="vaadin:upload"
+                                    maxFileSize="10000000"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

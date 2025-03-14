@@ -28,6 +28,12 @@
             <textField id="legalTextNameField" colspan="2" property="legalTextName"/>
             <textField id="textSubjectField" property="textSubject"/>
             <datePicker id="effectiveDateField" property="effectiveDate"/>
+            <fileStorageUploadField id="attachmentField"
+                                    property="attachment"
+                                    clearButtonVisible="true"
+                                    fileNameVisible="true"
+                                    uploadIcon="vaadin:upload"
+                                    maxFileSize="10000000"/>
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>

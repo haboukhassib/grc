@@ -43,9 +43,11 @@ public class AuditRecommendation {
     @Column(name = "ADDITIONAL_COMMENT")
     @Lob
     private String additionalComment;
+
     @Comment("Pièce Jointe")
     @Column(name = "ATTACHMENT", length = 1024)
     private FileRef attachment;
+
     @JoinColumn(name = "REPORTING_ID")
     @ManyToOne(fetch = FetchType.LAZY)
     private Reporting reporting;
